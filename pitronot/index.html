@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - מסך פתרונות אתר ברשת</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InVision - פתרונות שיווק מתקדמים</title>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">InVision</div>
+        <nav>
+            <ul>
+                <li><a href="/" onclick="showMessage('נווטת לדף הבית')"><i class="fas fa-home"></i> דף הבית</a></li>
+                <li><a href="/mozarim/" onclick="showMessage('נווטת לעמוד המוצרים')"><i class="fas fa-box"></i> מוצרים</a></li>
+                <li><a href="/pitronot/" class="active" onclick="showMessage('נווטת לעמוד הפתרונות')"><i class="fas fa-lightbulb"></i> פתרונות</a></li>
+                <li><a href="#" onclick="showMessage('נווטת לעמוד התמיכה')"><i class="fas fa-headset"></i> תמיכה</a></li>
+                <li><a href="#" onclick="showMessage('נווטת לעמוד אודות')"><i class="fas fa-info-circle"></i> אודות</a></li>
+                <li><a href="#" onclick="showMessage('נווטת לעמוד צור קשר')"><i class="fas fa-envelope"></i> צור קשר</a></li>
+            </ul>
+        </nav>
+        <div class="search-login">
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="חפש מוצרים, פתרונות..." oninput="toggleClearIcon()">
+                <button class="clear-icon" id="clearIcon" onclick="clearSearch()"><i class="fas fa-times"></i></button>
+                <button class="search-icon" onclick="search()"><i class="fas fa-search"></i></button>
+            </div>
+            <a href="/login/">
+                <button class="login-btn" onclick="showMessage('מציג טופס התחברות')">התחבר</button>
+            </a>
+            <div class="language-selector">
+                <select onchange="changeLanguage(this.value)">
+                    <option value="he">עברית</option>
+                    <option value="en">English</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <div id="message"></div>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>פתרונות שיווק מתקדמים לכל תעשייה</h1>
+                <p>גלה כיצד InVision יכולה לסייע לעסק שלך לצמוח ולהצליח בעולם הדיגיטלי</p>
+            </div>
+        </section>
+
+        <section class="container">
+            <div id="industryFilter">
+                <button onclick="filterSolutions('all')" class="active">הכל</button>
+                <button onclick="filterSolutions('ecommerce')">אי-קומרס</button>
+                <button onclick="filterSolutions('tech')">טכנולוגיה</button>
+                <button onclick="filterSolutions('finance')">פיננסים</button>
+                <button onclick="filterSolutions('health')">בריאות</button>
+                <button onclick="filterSolutions('education')">חינוך</button>
+                <button onclick="filterSolutions('tourism')">תיירות</button>
+            </div>
+
+            <div class="solutions-grid" id="solutionsGrid">
+                <!-- פתרונות יתווספו כאן דינמית באמצעות JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <div id="solutionModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <p id="modalDescription"></p>
+            <h3>יתרונות עיקריים:</h3>
+            <ul id="modalBenefits"></ul>
+            <h3>מקרה לדוגמה:</h3>
+            <p id="modalCaseStudy"></p>
+            <button class="cta-button" onclick="requestDemo()">בקש הדגמה</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 InVision. כל הזכויות שמורות.</p>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>

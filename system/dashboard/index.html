@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - דשבורד 2.0</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>בקרה והיסטורית שימוש - גלגלים מהירים</title>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">איוויז'ן</div>
+            <ul class="centered-menu">
+                <li><a href="#" class="active" aria-current="page"><i class="fas fa-home" aria-hidden="true"></i> דף הבית</a></li>
+                <li><a href="#"><i class="fas fa-ad" aria-hidden="true"></i> צור קמפיין</a></li>
+                <li><a href="#"><i class="fas fa-plus-circle" aria-hidden="true"></i> צור תוכן</a></li>
+                <li><a href="#"><i class="fas fa-lightbulb" aria-hidden="true"></i> המלצות</a></li>
+                <li><a href="#" ><i class="fas fa-paint-brush" aria-hidden="true"></i> סטודיו</a></li>
+                <li><a href="#"><i class="fas fa-cog" aria-hidden="true"></i> הגדרות</a></li>
+                <li><a href="#"><i class="fas fa-sign-out-alt" aria-hidden="true"></i> התנתק</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1><i class="fas fa-bicycle"></i> לוח בקרה והיסטורית שימוש - גלגלים מהירים</h1>
+        
+        <div class="tab-container">
+            <button class="tab" onclick="showContent('overview')"><i class="fas fa-home"></i> סקירה כללית</button>
+            <button class="tab" onclick="showContent('marketing')"><i class="fas fa-ad"></i> פעילויות שיווק</button>
+            <button class="tab" onclick="showContent('general')"><i class="fas fa-tasks"></i> פעילויות כלליות</button>
+            <button class="tab" onclick="showContent('data')"><i class="fas fa-database"></i> נתונים ופעילות</button>
+            <button class="tab" onclick="showContent('security')"><i class="fas fa-shield-alt"></i> אבטחה וציות</button>
+            <button class="tab" onclick="showContent('reports')"><i class="fas fa-chart-bar"></i> דוחות וניתוחים</button>
+        </div>
+
+        <div id="overview" class="content">
+            <div class="card">
+                <h2><i class="fas fa-tachometer-alt"></i> סקירה כללית</h2>
+                <p>ברוכים הבאים ללוח הבקרה של גלגלים מהירים. כאן תוכלו לצפות בכל הפעילויות והנתונים החשובים של העסק שלכם.</p>
+                
+                <div class="stats">
+                    <div class="stat-card">
+                        <i class="fas fa-shopping-cart"></i>
+                        <div class="stat-value">1,245</div>
+                        <div>מכירות החודש</div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-users"></i>
+                        <div class="stat-value">15,678</div>
+                        <div>עוקבים ברשתות חברתיות</div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-star"></i>
+                        <div class="stat-value">4.8</div>
+                        <div>דירוג ממוצע</div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-dollar-sign"></i>
+                        <div class="stat-value">87,500 ₪</div>
+                        <div>הכנסות החודש</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="marketing" class="content">
+            <div class="card">
+                <h2><i class="fas fa-bullhorn"></i> לוג פעילות שיווקית - "גלגלים מהירים"</h2>
+                
+                <div class="filters">
+                    <div class="filter">
+                        <label for="date-range">טווח תאריכים:</label>
+                        <input type="date" id="start-date">
+                        <input type="date" id="end-date">
+                    </div>
+                    <div class="filter">
+                        <label for="platform">פלטפורמה:</label>
+                        <select id="platform">
+                            <option value="all">הכל</option>
+                            <option value="facebook">פייסבוק</option>
+                            <option value="instagram">אינסטגרם</option>
+                            <option value="google">גוגל</option>
+                            <option value="tiktok">טיקטוק</option>
+                        </select>
+                    </div>
+                    <div class="filter">
+                        <label for="campaign-type">סוג קמפיין:</label>
+                        <select id="campaign-type">
+                            <option value="all">הכל</option>
+                            <option value="single">פרסום בודד</option>
+                            <option value="campaign">קמפיין</option>
+                        </select>
+                    </div>
+                    <div class="apply-filter">
+                        <button class="btn" onclick="applyFilters()">החל סינון</button>
+                    </div>
+                </div>
+
+                <div class="activity-item">
+                    <h3>1. 03/01/2024 - פרסום בודד</h3>
+                    <p>
+                        <i class="fab fa-facebook"></i> פלטפורמה: פייסבוק<br>
+                        <i class="fas fa-image"></i> סוג: תמונה עם טקסט<br>
+                        <i class="fas fa-tag"></i> נושא: מבצע פתיחת שנה - 15% הנחה על כל האופניים<br>
+                        <i class="fas fa-chart-line"></i> תוצאות (48 שעות): 2,000 חשיפות, 150 לייקים, 10 שיתופים<br>
+                        <i class="fas fa-lightbulb"></i> עצת מערכת: הוספת תאריך סיום המבצע ליצירת דחיפות
+                    </p>
+                </div>
+
+                <div class="activity-item">
+                    <h3>2. 10/01/2024 - 24/01/2024 - קמפיין "חזרה לכושר"</h3>
+                    <p>
+                        <i class="fas fa-globe"></i> פלטפורמות: פייסבוק, אינסטגרם, גוגל אדס<br>
+                        <i class="fas fa-info-circle"></i> תיאור: סדרת פוסטים ומודעות המקדמות רכיבה על אופניים כפתרון לכושר<br>
+                        <i class="fas fa-chart-bar"></i> תוצאות מצטברות:<br>
+                        - פייסבוק: 10,000 חשיפות, 500 לייקים, 50 הודעות<br>
+                        - אינסטגרם: 8,000 חשיפות, 400 עוקבים חדשים<br>
+                        - גוגל אדס: 5,000 הצגות, 200 קליקים, 10 רכישות<br>
+                        <i class="fas fa-lightbulb"></i> שיפור שהוצע: שילוב סרטוני הדרכה קצרים<br>
+                        <i class="fas fa-chart-line"></i> תוצאות אחרי שיפור: 30% עלייה במעורבות, 15% עלייה ברכישות
+                    </p>
+                </div>
+
+                <div class="activity-item">
+                    <h3>3. 01/02/2024 - פרסום בודד</h3>
+                    <p>
+                        <i class="fab fa-instagram"></i> פלטפורמה: אינסטגרם<br>
+                        <i class="fas fa-video"></i> סוג: סטורי<br>
+                        <i class="fas fa-tag"></i> נושא: הגעת דגם אופניים חדש לחנות<br>
+                        <i class="fas fa-chart-line"></i> תוצאות (24 שעות): 1,500 צפיות, 50 תגובות<br>
+                        <i class="fas fa-lightbulb"></i> עצת מערכת: יצירת פוסט קבוע (feed post) עם מידע נוסף על הדגם
+                    </p>
+                </div>
+
+                <div class="activity-item">
+                    <h3>4. 14/02/2024 - פרסום בודד</h3>
+                    <p>
+                        <i class="fab fa-tiktok"></i> פלטפורמה: טיקטוק<br>
+                        <i class="fas fa-video"></i> סוג: סרטון קצר<br>
+                        <i class="fas fa-tag"></i> נושא: טיפים לתחזוקת אופניים<br>
+                        <i class="fas fa-chart-line"></i> תוצאות (72 שעות): 5,000 צפיות, 300 לייקים, 20 שיתופים<br>
+                        <i class="fas fa-lightbulb"></i> עצת מערכת: יצירת סדרת טיפים שבועית
+                    </p>
+                </div>
+
+                <div class="activity-item">
+                    <h3>5. 01/03/2024 - 31/03/2024 - קמפיין "אביב על גלגלים"</h3>
+                    <p>
+                        <i class="fas fa-globe"></i> פלטפורמות: פייסבוק, אינסטגרם, יוטיוב, אימייל מרקטינג<br>
+                        <i class="fas fa-info-circle"></i> תיאור: קמפיין חודשי המקדם טיולי אופניים באביב<br>
+                        <i class="fas fa-chart-bar"></i> תוצאות מצטברות:<br>
+                        - פייסבוק: 20,000 חשיפות, 1,000 לייקים, 100 שיתופים<br>
+                        - אינסטגרם: 15,000 חשיפות, 800 עוקבים חדשים<br>
+                        - יוטיוב: סרטון עם 3,000 צפיות<br>
+                        - אימייל: 40% אחוז פתיחה, 15% קליקים<br>
+                        <i class="fas fa-lightbulb"></i> שיפור שהוצע: שיתוף פעולה עם מובילי דעה מקומיים<br>
+                        <i class="fas fa-chart-line"></i> תוצאות אחרי שיפור: 50% עלייה בחשיפה, 25% עלייה במכירות
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div id="general" class="content">
+            <div class="card">
+                <h2><i class="fas fa-tasks"></i> פעילויות כלליות</h2>
+                
+                <div class="filters">
+                    <div class="filter">
+                        <label for="activity-date">תאריך:</label>
+                        <input type="date" id="activity-date">
+                    </div>
+                    <div class="filter">
+                        <label for="activity-type">סוג פעילות:</label>
+                        <select id="activity-type">
+                            <option value="all">הכל</option>
+                            <option value="login">כניסות ויציאות</option>
+                            <option value="changes">שינויים ידניים</option>
+                            <option value="system">שינויי מערכת</option>
+                        </select>
+                    </div>
+                    <div class="apply-filter">
+                        <button class="btn" onclick="applyGeneralFilters()">החל סינון</button>
+                    </div>
+                </div>
+
+                <h3><i class="fas fa-sign-in-alt"></i> כניסות ויציאות משתמשים</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>תאריך ושעה</th>
+                            <th>משתמש</th>
+                            <th>פעולה</th>
+                            <th>כתובת IP</th>
+                            <th>מיקום גאוגרפי</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>05/08/2024 09:30</td>
+                            <td>יעל כהן</td>
+                            <td>כניסה</td>
+                            <td>192.168.1.100</td>
+                            <td>תל אביב</td>
+                        </tr>
+                        <tr>
+                            <td>05/08/2024 17:45</td>
+                            <td>דני לוי</td>
+                            <td>יציאה</td>
+                            <td>192.168.1.101</td>
+                            <td>חיפה</td>
+                        </tr>
+                        <tr>
+                            <td>06/08/2024 08:15</td>
+                            <td>רונית אברהם</td>
+                            <td>כניסה</td>
+                            <td>192.168.1.102</td>
+                            <td>ירושלים</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3><i class="fas fa-edit"></i> שינויים ידניים</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>תאריך</th>
+                            <th>משתמש</th>
+                            <th>פעולה</th>
+                            <th>פרטים</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>04/08/2024</td>
+                            <td>אבי ישראלי</td>
+                            <td>עדכון פרטי מוצר</td>
+                            <td>שינוי מחיר אופני הרים מדגם X-500</td>
+                        </tr>
+                        <tr>
+                            <td>03/08/2024</td>
+                            <td>מנהל מערכת</td>
+                            <td>הוספת משתמש חדש</td>
+                            <td>הוספת מנהל שיווק חדש למערכת</td>
+                        </tr>
+                        <tr>
+                            <td>02/08/2024</td>
+                            <td>שרה לוי</td>
+                            <td>עדכון פרטי לקוח</td>
+                            <td>שינוי כתובת משלוח ללקוח קבוע</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3><i class="fas fa-cogs"></i> שינויים שבוצעו על ידי המערכת</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>תאריך</th>
+                            <th>סוג פעולה</th>
+                            <th>פרטים</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>01/08/2024</td>
+                            <td>עדכון אוטומטי של מחירים</td>
+                            <td>התאמת מחירים לפי שער מטבע עדכני</td>
+                        </tr>
+                        <tr>
+                            <td>31/07/2024</td>
+                            <td>גיבוי מערכת</td>
+                            <td>גיבוי אוטומטי שבועי של בסיס הנתונים</td>
+                        </tr>
+                        <tr>
+                            <td>30/07/2024</td>
+                            <td>שליחת התראות</td>
+                            <td>שליחת תזכורות אוטומטיות ללקוחות על הזמנות בהמתנה</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="data" class="content">
+            <div class="card">
+                <h2><i class="fas fa-database"></i> נתונים ופעילות על נתונים</h2>
+                
+                <div class="filters">
+                    <div class="filter">
+                        <label for="data-date">תאריך:</label>
+                        <input type="date" id="data-date">
+                    </div>
+                    <div class="filter">
+                        <label for="data-operation">סוג פעולה:</label>
+                        <select id="data-operation">
+                            <option value="all">הכל</option>
+                            <option value="import">ייבוא</option>
+                            <option value="export">ייצוא</option>
+                            <option value="update">עדכון</option>
+                            <option value="cleanup">ניקוי</option>
+                        </select>
+                    </div>
+                    <div class="apply-filter">
+                        <button class="btn" onclick="applyDataFilters()">החל סינון</button>
+                    </div>
+                </div>
+
+                <h3><i class="fas fa-exchange-alt"></i> ייבוא וייצוא נתונים</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>תאריך</th>
+                            <th>סוג פעולה</th>
+                            <th>מקור/יעד</th>
+                            <th>סטטוס</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>04/08/2024</td>
+                            <td>ייבוא</td>
+                            <td>קטלוג מוצרים חדש מספק</td>
+                            <td>הושלם בהצלחה</td>
+                        </tr>
+                        <tr>
+                            <td>03/08/2024</td>
+                            <td>ייצוא</td>
+                            <td>דוח מכירות שבועי לפייסבוק</td>
+                            <td>הושלם בהצלחה</td>
+                        </tr>
+                        <tr>
+                            <td>02/08/2024</td>
+                            <td>ייבוא</td>
+                            <td>נתוני לקוחות ממערכת CRM</td>
+                            <td>נכשל - שגיאת פורמט</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3><i class="fas fa-sync"></i> עדכוני נתונים</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>תאריך</th>
+                            <th>סוג עדכון</th>
+                            <th>פרטים</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>01/08/2024</td>
+                            <td>עדכון מחירים</td>
+                            <td>התאמת מחירים לקמפיין קיץ</td>
+                        </tr>
+                        <tr>
+                            <td>31/07/2024</td>
+                            <td>עדכון מלאי</td>
+                            <td>הוספת מלאי חדש של אופני הרים</td>
+                        </tr>
+                        <tr>
+                            <td>30/07/2024</td>
+                            <td>עדכון פרטי ספק</td>
+                            <td>שינוי פרטי התקשרות עם ספק אביזרים</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3><i class="fas fa-broom"></i> שיפור נתונים</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>תאריך</th>
+                            <th>סוג פעולה</th>
+                            <th>פרטים</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>29/07/2024</td>
+                            <td>ניקוי נתונים</td>
+                            <td>הסרת כפילויות ברשימת לקוחות</td>
+                        </tr>
+                        <tr>
+                            <td>28/07/2024</td>
+                            <td>העשרת נתונים</td>
+                            <td>הוספת תגיות SEO למוצרים</td>
+                        </tr>
+                        <tr>
+                            <td>27/07/2024</td>
+                            <td>תיקון שגיאות</td>
+                            <td>תיקון שגיאות כתיב בתיאורי מוצרים</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="security" class="content">
+            <div class="card">
+                <h2><i class="fas fa-shield-alt"></i> אבטחה וציות</h2>
+                
+                <div class="filters">
+                    <div class="filter">
+                        <label for="security-date">תאריך:</label>
+                        <input type="date" id="security-date">
+                    </div>
+                    <div class="filter">
+                        <label for="security-type">סוג אירוע:</label>
+                        <select id="security-type">
+                            <option value="all">הכל</option>
+                            <option value="login-attempt">ניסיונות כניסה</option>
+                            <option value="data-access">גישה לנתונים</option>
+                            <option value="system-update">עדכוני מערכת</option>
+                        </select>
+                    </div>
+                    <div class="apply-filter">
+                        <button class="btn" onclick="applySecurityFilters()">החל סינון</button>
+                    </div>
+                </div>
+
+                <h3><i class="fas fa-user-shield"></i> פעולות אבטחה</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>תאריך</th>
+                            <th>סוג אירוע</th>
+                            <th>פרטים</th>
+                            <th>פעולה שננקטה</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>05/08/2024</td>
+                            <td>ניסיון כניסה כושל</td>
+                            <td>3 ניסיונות כושלים מ-IP חשוד</td>
+                            <td>חסימת IP זמנית</td>
+                        </tr>
+                        <tr>
+                            <td>04/08/2024</td>
+                            <td>גישה לנתונים רגישים</td>
+                            <td>צפייה בנתוני אשראי של לקוחות</td>
+                            <td>תיעוד ובדיקת הרשאות</td>
+                        </tr>
+                        <tr>
+                            <td>03/08/2024</td>
+                            <td>עדכון מערכת אבטחה</td>
+                            <td>התקנת עדכון אבטחה קריטי</td>
+                            <td>ביצוע גיבוי ועדכון המערכת</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3><i class="fas fa-clipboard-check"></i> ציות ורגולציה</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>תאריך</th>
+                            <th>נושא</th>
+                            <th>פרטים</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>02/08/2024</td>
+                            <td>GDPR</td>
+                            <td>עדכון מדיניות פרטיות באתר</td>
+                        </tr>
+                        <tr>
+                            <td>01/08/2024</td>
+                            <td>אבטחת מידע</td>
+                            <td>הדרכת עובדים בנושא פישינג</td>
+                        </tr>
+                        <tr>
+                            <td>31/07/2024</td>
+                            <td>תקנות סליקה</td>
+                            <td>עדכון מערכת התשלומים לעמידה בתקן PCI-DSS</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="reports" class="content">
+            <div class="card">
+                <h2><i class="fas fa-chart-bar"></i> דוחות וניתוחים</h2>
+                
+                <div class="filters">
+                    <div class="filter">
+                        <label for="report-date">תאריך:</label>
+                        <input type="date" id="report-date">
+                    </div>
+                    <div class="filter">
+                        <label for="report-type">סוג דוח:</label>
+                        <select id="report-type">
+                            <option value="all">הכל</option>
+                            <option value="sales">מכירות</option>
+                            <option value="marketing">שיווק</option>
+                            <option value="inventory">מלאי</option>
+                            <option value="customer">לקוחות</option>
+                        </select>
+                    </div>
+                    <div class="apply-filter">
+                        <button class="btn" onclick="applyReportFilters()">החל סינון</button>
+                    </div>
+                </div>
+
+                <h3><i class="fas fa-file-alt"></i> דוחות אחרונים</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>תאריך</th>
+                            <th>שם הדוח</th>
+                            <th>יוצר</th>
+                            <th>פעולות</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>05/08/2024</td>
+                            <td>ניתוח קמפיין קיץ</td>
+                            <td>יעל כהן</td>
+                            <td><button class="btn">צפייה</button></td>
+                        </tr>
+                        <tr>
+                            <td>04/08/2024</td>
+                            <td>סיכום מכירות חודשי</td>
+                            <td>מערכת</td>
+                            <td><button class="btn">צפייה</button></td>
+                        </tr>
+                        <tr>
+                            <td>03/08/2024</td>
+                            <td>ניתוח התנהגות לקוחות</td>
+                            <td>דני לוי</td>
+                            <td><button class="btn">צפייה</button></td>
+                        </tr>
+                        <tr>
+                            <td>02/08/2024</td>
+                            <td>דוח מלאי רבעוני</td>
+                            <td>מערכת</td>
+                            <td><button class="btn">צפייה</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3><i class="fas fa-lightbulb"></i> תובנות עיקריות</h3>
+                <ul>
+                    <li>עלייה של 25% במכירות אופני הרים בעקבות קמפיין הקיץ</li>
+                    <li>60% מהרכישות החודש בוצעו דרך פלטפורמת הפייסבוק</li>
+                    <li>שיפור של 15% בזמן שהייה ממוצע באתר לאחר שדרוג הממשק</li>
+                    <li>המוצר הנמכר ביותר: קסדת רכיבה מדגם Pro-X</li>
+                    <li>ירידה של 20% בתלונות לקוחות בעקבות שיפור מערך השירות</li>
+                </ul>
+
+                <h3><i class="fas fa-chart-line"></i> מגמות ותחזיות</h3>
+                <p>על פי הנתונים האחרונים, אנו צופים:</p>
+                <ul>
+                    <li>גידול של 30% במכירות אופניים חשמליים ברבעון הבא</li>
+                    <li>עלייה בביקוש לאביזרי בטיחות בעקבות קמפיין המודעות האחרון</li>
+                    <li>צורך בהגדלת המלאי של אופני ילדים לקראת עונת החגים</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 אינוויז'ן. כל הזכויות שמורות.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>

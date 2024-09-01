@@ -1,0 +1,341 @@
+body {
+    font-family: 'Assistant', sans-serif;
+    background-color: #243665;
+    margin: 0;
+    padding: 20px;
+    color: #ffffff;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+h1, h2 {
+    color: #00bec6;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+h2 {
+    font-size: 2em;
+    margin-top: 40px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+    position: relative;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #00bec6;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="url"],
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid #00bec6;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #ffffff;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+input[type="email"]::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+input[type="tel"] {
+    text-align: right;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    box-shadow: 0 0 10px #00bec6;
+}
+
+.industry-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.industry-option {
+    background-color: rgba(0, 190, 198, 0.2);
+    padding: 10px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.industry-option:hover,
+.industry-option.selected {
+    background-color: #00bec6;
+    color: #243665;
+}
+
+button {
+    background-color: #00bec6;
+    color: #243665;
+    padding: 14px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    width: 100%;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 190, 198, 0.2);
+}
+
+button:hover {
+    background-color: #00a0a8;
+    box-shadow: 0 6px 8px rgba(0, 190, 198, 0.4);
+    transform: translateY(-2px);
+}
+
+.social-permissions {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.social-permission {
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.social-permission:hover {
+    background-color: rgba(0, 190, 198, 0.2);
+}
+
+.social-permission input[type="checkbox"] {
+    display: none;
+}
+
+.social-permission .checkbox-custom {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #00bec6;
+    border-radius: 4px;
+    margin-right: 10px;
+    position: relative;
+}
+
+.social-permission input[type="checkbox"]:checked + .checkbox-custom::after {
+    content: '✔';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #00bec6;
+}
+
+.tooltip {
+    position: absolute;
+    background-color: rgba(0, 190, 198, 0.9);
+    color: #ffffff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.form-group:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+.file-upload {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.file-upload input[type="file"] {
+    display: none;
+}
+
+.file-upload label {
+    background-color: #00bec6;
+    color: #243665;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.file-upload label:hover {
+    background-color: #00a0a8;
+}
+
+.file-name {
+    margin-right: 15px;
+    color: #ffffff;
+}
+
+.other-industry-input {
+    display: none;
+    margin-top: 10px;
+}
+
+.other-industry-input.show {
+    display: flex;
+}
+
+.other-industry-input input {
+    flex-grow: 1;
+    margin-right: 10px;
+}
+
+.other-industry-input button {
+    width: auto;
+    padding: 10px 15px;
+    margin-right: 5px;
+}
+
+.age-range, .gender-selection {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.age-range input, .gender-selection input[type="radio"] {
+    margin-right: 5px;
+}
+
+.competitor-input {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.competitor-input input {
+    flex-grow: 1;
+}
+
+.add-competitor {
+    background-color: #00bec6;
+    color: #243665;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.permissions-explanation {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.age-groups {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.age-group {
+    background-color: rgba(0, 190, 198, 0.2);
+    padding: 10px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.age-group:hover,
+.age-group.selected {
+    background-color: #00bec6;
+    color: #243665;
+}
+
+.social-icon {
+    margin-right: 10px;
+}
+
+.modern-input {
+    border: none;
+    border-bottom: 2px solid #00bec6;
+    background-color: transparent;
+    padding: 10px 0;
+    transition: all 0.3s ease;
+}
+
+.modern-input:focus {
+    border-bottom-color: #ffffff;
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.card-icon {
+    font-size: 24px;
+    margin-right: 10px;
+    color: #00bec6;
+}
+
+.card-title {
+    font-size: 1.2em;
+    color: #00bec6;
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+footer {
+    background-color: #243665;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}

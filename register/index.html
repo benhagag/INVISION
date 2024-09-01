@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - טופס רישום לקוח חדש</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>טופס רישום לקוח חדש</title>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>טופס רישום לקוח חדש</h1>
+        <form id="newClientForm">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-building card-icon"></i>
+                    <h2 class="card-title">פרטי החברה</h2>
+                </div>
+                <div class="form-group">
+                    <label for="companyName">שם החברה</label>
+                    <input type="text" id="companyName" name="companyName" required placeholder="הזן את שם החברה המלא" class="modern-input">
+                    <div class="tooltip">שם החברה כפי שמופיע במסמכים הרשמיים</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contactName">איש קשר</label>
+                    <input type="text" id="contactName" name="contactName" required placeholder="שם מלא של איש הקשר" class="modern-input">
+                    <div class="tooltip">הגורם העיקרי איתו נתקשר בענייני הקמפיין</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">דוא"ל</label>
+                    <input type="email" id="email" name="email" required placeholder="כתובת דואר אלקטרונית  עדכנית" class="modern-input">
+                    <div class="tooltip">כתובת למשלוח עדכונים ודוחות</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">טלפון</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="מספר טלפון נייד" class="modern-input">
+                    <div class="tooltip">מספר ליצירת קשר מיידי</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="website">אתר אינטרנט</label>
+                    <input type="url" id="website" name="website" placeholder="כתובת האתר המלאה כולל https://" class="modern-input">
+                    <div class="tooltip">כתובת האתר הראשי של החברה</div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-industry card-icon"></i>
+                    <h2 class="card-title">תחום עיסוק</h2>
+                </div>
+                <div class="form-group">
+                    <div class="industry-options">
+                        <div class="industry-option" data-value="tech"><i class="fas fa-microchip"></i> טכנולוגיה</div>
+                        <div class="industry-option" data-value="finance"><i class="fas fa-chart-line"></i> פיננסים</div>
+                        <div class="industry-option" data-value="health"><i class="fas fa-heartbeat"></i> בריאות</div>
+                        <div class="industry-option" data-value="education"><i class="fas fa-graduation-cap"></i> חינוך</div>
+                        <div class="industry-option" data-value="retail"><i class="fas fa-shopping-cart"></i> קמעונאות</div>
+                        <div class="industry-option" data-value="other"><i class="fas fa-ellipsis-h"></i> אחר</div>
+                    </div>
+                    <div class="other-industry-input">
+                        <input type="text" id="otherIndustry" placeholder="הזן תחום עיסוק אחר" class="modern-input">
+                        <button type="button" id="saveOtherIndustry">שמור</button>
+                        <button type="button" id="editOtherIndustry">ערוך</button>
+                        <button type="button" id="deleteOtherIndustry">מחק</button>
+                    </div>
+                    <input type="hidden" id="industry" name="industry">
+                    <div class="tooltip">בחר את התחום המתאים ביותר לעסק שלך</div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-lock card-icon"></i>
+                    <h2 class="card-title">הרשאות נדרשות</h2>
+                </div>
+                <div class="permissions-explanation">
+                    <p>לצורך ניהול יעיל של הקמפיינים שלך, אנו זקוקים להרשאות גישה מסוימות לחשבונות הרשתות החברתיות והפלטפורמות השיווקיות שלך. חשוב לנו להבהיר את מהות ההרשאות הללו ולהרגיע כל חשש:</p>
+                    <ul>
+                        <li><strong>מטרת ההרשאות:</strong> ההרשאות מאפשרות לנו לנהל קמפיינים, לעקוב אחר ביצועים ולבצע אופטימיזציה בשמך, מבלי לגשת למידע אישי או לפרסם תוכן ללא אישורך.</li>
+                        <li><strong>שליטה מלאה:</strong> בכל עת תוכל לבטל את ההרשאות או לשנות אותן. אנחנו לא נבצע שום פעולה החורגת ממה שסוכם מראש.</li>
+                        <li><strong>אבטחת מידע:</strong> אנו מקפידים על אמצעי אבטחה מתקדמים להגנה על המידע והחשבונות שלך.</li>
+                        <li><strong>שקיפות מלאה:</strong> נספק לך דוחות מפורטים על כל הפעולות שבוצעו בחשבונותיך.</li>
+                    </ul>
+                    <p>להלן פירוט ההרשאות הספציפיות הנדרשות עבור כל פלטפורמה:</p>
+                </div>
+                
+                <div class="form-group">
+                    <label>הרשאות לפרסום ברשתות חברתיות</label>
+                    <div class="social-permissions">
+                        <label class="social-permission">
+                            <input type="checkbox" id="instagram" name="socialMedia" value="instagram">
+                            <span class="checkbox-custom"></span>
+                            <i class="fab fa-instagram social-icon"></i> Instagram
+                        </label>
+                        <label class="social-permission">
+                            <input type="checkbox" id="facebook" name="socialMedia" value="facebook">
+                            <span class="checkbox-custom"></span>
+                            <i class="fab fa-facebook social-icon"></i> Facebook
+                        </label>
+                        <label class="social-permission">
+                            <input type="checkbox" id="youtube" name="socialMedia" value="youtube">
+                            <span class="checkbox-custom"></span>
+                            <i class="fab fa-youtube social-icon"></i> YouTube
+                        </label>
+                        <label class="social-permission">
+                            <input type="checkbox" id="twitter" name="socialMedia" value="twitter">
+                            <span class="checkbox-custom"></span>
+                            <i class="fab fa-twitter social-icon"></i> Twitter
+                        </label>
+                        <label class="social-permission">
+                            <input type="checkbox" id="tiktok" name="socialMedia" value="tiktok">
+                            <span class="checkbox-custom"></span>
+                            <i class="fab fa-tiktok social-icon"></i> TikTok
+                        </label>
+                    </div>
+                    <div class="tooltip">בחר את הפלטפורמות בהן תרצה לפרסם. ההרשאות יאפשרו לנו לנהל קמפיינים ולצפות בנתונים, אך לא לפרסם תוכן ללא אישורך.</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="googleAdsAccount">חשבון Google Ads</label>
+                    <input type="text" id="googleAdsAccount" name="googleAdsAccount" placeholder="הזן את מזהה החשבון שלך ב-Google Ads" class="modern-input">
+                    <div class="tooltip">הזן את מזהה החשבון שלך ב-Google Ads. הרשאה זו תאפשר לנו לנהל קמפיינים, לבצע אופטימיזציה ולעקוב אחר ביצועים, אך לא לבצע שינויים מהותיים ללא אישורך.</div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-users card-icon"></i>
+                    <h2 class="card-title">קהל יעד</h2>
+                </div>
+                <div class="form-group">
+                    <label for="targetAudience">תיאור קהל היעד</label>
+                    <textarea id="targetAudience" name="targetAudience" rows="3" placeholder="תאר את קהל היעד העיקרי שלך" class="modern-input"></textarea>
+                    <div class="age-groups">
+                        <div class="age-group" data-value="18-24">18-24</div>
+                        <div class="age-group" data-value="25-34">25-34</div>
+                        <div class="age-group" data-value="35-44">35-44</div>
+                        <div class="age-group" data-value="45+">45+</div>
+                    </div>
+                    <div class="gender-selection">
+                        <label>מגדר: </label>
+                        <label><input type="radio" name="gender" value="male"> גבר</label>
+                        <label><input type="radio" name="gender" value="female"> אישה</label>
+                        <label><input type="radio" name="gender" value="all" checked> כולם</label>
+                    </div>
+                    <div class="tooltip">פרט מאפיינים דמוגרפיים, תחומי עניין וכו'</div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-handshake card-icon"></i>
+                    <h2 class="card-title">מתחרים עיקריים</h2>
+                </div>
+                <div class="form-group">
+                    <div id="competitorsList">
+                        <div class="competitor-input">
+                            <input type="text" placeholder="שם המתחרה" class="modern-input">
+                            <input type="url" placeholder="קישור לאתר המתחרה" class="modern-input">
+                        </div>
+                    </div>
+                    <button type="button" class="add-competitor">הוסף מתחרה</button>
+                    <div class="tooltip">ציין את המתחרים העיקריים בתחום שלך</div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-image card-icon"></i>
+                    <h2 class="card-title">לוגו החברה</h2>
+                </div>
+                <div class="form-group">
+                    <div class="file-upload">
+                        <input type="file" id="logo" name="logo" accept="image/*">
+                        <label for="logo">בחר קובץ</label>
+                        <span class="file-name"></span>
+                    </div>
+                    <div class="tooltip">העלה את הלוגו באיכות גבוהה (פורמט PNG או SVG מועדף)</div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-info-circle card-icon"></i>
+                    <h2 class="card-title">מידע נוסף</h2>
+                </div>
+                <div class="form-group">
+                    <textarea id="additionalInfo" name="additionalInfo" rows="4" placeholder="כל מידע נוסף שיכול לעזור לנו" class="modern-input"></textarea>
+                    <div class="tooltip">הוסף פרטים נוספים שיכולים לסייע בקמפיין</div>
+                </div>
+            </div>
+            <a href="/registered/">
+                <button type="button">שלח טופס</button>
+            </a>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 אינוויז'ן. כל הזכויות שמורות.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,111 @@
+body {
+    font-family: 'Assistant', sans-serif;
+    background-color: #243665;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    text-align: center;
+    padding: 3rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.welcome-message {
+    font-size: 2.8rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.success-message {
+    font-size: 1.3rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.9;
+}
+
+.start-question {
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
+    color: #00bec6;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.action-button {
+    font-family: 'Assistant', sans-serif;
+    font-size: 1.3rem;
+    font-weight: bold;
+    padding: 1rem 2rem;
+    border: 2px solid #00bec6;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    background-color: transparent;
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.action-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #00bec6;
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+}
+
+.action-button:hover::before {
+    transform: scaleX(1);
+}
+
+.action-button:hover {
+    color: #243665;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 190, 198, 0.4);
+}
+
+.action-button:active {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0, 190, 198, 0.4);
+}
+
+#username {
+    color: #00bec6;
+    font-weight: bold;
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 5px #00bec6;
+    }
+    50% {
+        box-shadow: 0 0 20px #00bec6, 0 0 30px #00bec6;
+    }
+    100% {
+        box-shadow: 0 0 5px #00bec6;
+    }
+}
+
+.action-button:hover {
+    animation: glow 1.5s infinite;
+}
