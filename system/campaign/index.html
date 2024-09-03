@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - מסך הגדרת קמפיין 2.0</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>הפקת קמפיין חדש</title>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">איוויז'ן</div>
+            <ul class="centered-menu">
+                <li><a href="#"><i class="fas fa-home" aria-hidden="true"></i> דף הבית</a></li>
+                <li><a href="system/campaign/index.html"class="active" aria-current="page"><i class="fas fa-ad" aria-hidden="true"></i> צור קמפיין</a></li>
+                <li><a href="#"><i class="fas fa-plus-circle" aria-hidden="true"></i> צור תוכן</a></li>
+                <li><a href="#"><i class="fas fa-lightbulb" aria-hidden="true"></i> המלצות</a></li>
+                <li><a href="#" ><i class="fas fa-paint-brush" aria-hidden="true"></i> סטודיו</a></li>
+                <li><a href="#"><i class="fas fa-cog" aria-hidden="true"></i> הגדרות</a></li>
+                <li><a href="#"><i class="fas fa-sign-out-alt" aria-hidden="true"></i> התנתק</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <h1>הפקת קמפיין חדש</h1>
+        
+        <form id="campaignForm">
+            <div class="main-content">
+                <div class="form-content">
+                    <section class="campaign-details section-box">
+                        <h2><i class="fas fa-info-circle"></i> פרטי הקמפיין</h2>
+                        <div class="form-group">
+                            <label for="campaignName">שם הקמפיין:</label>
+                            <input type="text" id="campaignName" placeholder="לדוגמה: קמפיין קיץ 2024" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>מטרות הקמפיין (בחר עד 3):</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="campaignGoal" value="brand-awareness"> מודעות למותג</label>
+                                <label><input type="checkbox" name="campaignGoal" value="consideration"> שיקול דעת</label>
+                                <label><input type="checkbox" name="campaignGoal" value="conversion"> המרה</label>
+                                <label><input type="checkbox" name="campaignGoal" value="new-customers"> גיוס לקוחות חדשים</label>
+                                <label><input type="checkbox" name="campaignGoal" value="loyalty"> שיפור נאמנות לקוחות קיימים</label>
+                                <label><input type="checkbox" name="campaignGoal" value="other" id="otherCheckbox"> אחר</label>
+                            </div>
+                            <textarea id="otherGoal" placeholder="הגדר מטרה אחרת (לדוגמה: הגדלת חשיפה בקהל יעד ספציפי)" class="hidden"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>משך הקמפיין:</label>
+                            <div class="checkbox-group">
+                                <label><input type="radio" name="campaignDuration" value="month"> חודש</label>
+                                <label><input type="radio" name="campaignDuration" value="twoMonths"> חודשיים</label>
+                                <label><input type="radio" name="campaignDuration" value="quarter"> רבעון</label>
+                                <label><input type="radio" name="campaignDuration" value="halfYear"> חצי שנה</label>
+                                <label><input type="radio" name="campaignDuration" value="custom"> טווח תאריכים מותאם אישית</label>
+                            </div>
+                            <div id="customDateRange" class="hidden">
+                                <input type="date" id="startDate">
+                                <input type="date" id="endDate">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>מדדים מרכזיים בקמפיין (בחר עד שניים):</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="kpi" value="engagementRate"> Engagement rate</label>
+                                <label><input type="checkbox" name="kpi" value="conversionRate"> Conversion rate</label>
+                                <label><input type="checkbox" name="kpi" value="cpl"> עלות לליד (CPL)</label>
+                                <label><input type="checkbox" name="kpi" value="roi"> ROI (Return On Investment)</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>מסרים מרכזיים בקמפיין (בחר עד שניים):</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="message" value="innovation"> חדשנות וייחודיות</label>
+                                <label><input type="checkbox" name="message" value="quality"> איכות ואמינות</label>
+                                <label><input type="checkbox" name="message" value="experience"> חווית לקוח מצוינת</label>
+                                <label><input type="checkbox" name="message" value="value"> תמורה מעולה למחיר</label>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="target-audience section-box">
+                        <h2><i class="fas fa-users"></i> קהל היעד</h2>
+                        <div class="form-group">
+                            <label>מגדר:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="gender" value="male" checked> גברים</label>
+                                <label><input type="checkbox" name="gender" value="female" checked> נשים</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>גיל:</label>
+                            <div class="button-group">
+                                <button type="button" class="option-button" data-value="18-24">18-24</button>
+                                <button type="button" class="option-button" data-value="25-34">25-34</button>
+                                <button type="button" class="option-button" data-value="35-44">35-44</button>
+                                <button type="button" class="option-button" data-value="45+">45+</button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="location">מיקום:</label>
+                            <div class="input-wrapper">
+                                <input type="text" id="location" placeholder="הזן ערים או אזורים בישראל (לדוגמה: תל אביב, מרכז)">
+                                <div id="locationSuggestions" class="suggestions"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="interests">תחומי עניין:</label>
+                            <div class="input-wrapper">
+                                <input type="text" id="interests" placeholder="הזן תחומי עניין (לדוגמה: ספורט, אופנה, טכנולוגיה)">
+                                <div id="interestSuggestions" class="suggestions"></div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <div class="total-budget">
+                        <label for="totalBudget">תקציב יומי כולל:</label>
+                        <input type="range" id="totalBudget" min="100" max="10000" step="100" value="1000">
+                        <span id="totalBudgetDisplay">₪1,000</span>
+                        <button id="editBudget" class="edit-button"><i class="fas fa-pen"></i></button>
+                    </div>
+
+                    <div class="campaign-type">
+                        <button type="button" id="manualCampaign" class="primary-button active">קמפיין באופן ידני</button>
+                        <button type="button" id="invisionCampaign" class="secondary-button">קמפיין עם InVision</button>
+                    </div>
+
+                    <div id="systemMessages" class="system-messages hidden"></div>
+
+                    <section id="channelSelection" class="channel-selection section-box" style="margin-top: 20px;">
+                        <h2><i class="fas fa-bullhorn"></i> ערוצי שיווק</h2>
+                        <!-- Channels will be dynamically populated here -->
+                    </section>
+
+                    <div class="form-actions">
+                        <button type="button" id="saveDraft" class="secondary-button">שמור טיוטה</button>
+                        <button type="submit" id="publishCampaign" class="primary-button">הפקת תוכן לפרסומים בערוצים בקמפיין</button>
+                    </div>
+                </div>
+                
+                <div class="summary-sidebar">
+                    <div id="tips" class="tips section-box">
+                        <h3><i class="fas fa-lightbulb"></i> טיפים והמלצות</h3>
+                        <p></p>
+                        <div id="contentRecommendations"></div>
+                    </div>
+
+                    <section id="campaignSummary" class="campaign-summary section-box">
+                        <h2><i class="fas fa-chart-pie"></i> סיכום הקמפיין</h2>
+                        <div class="summary-content">
+                            <div class="summary-text">
+                                <p>שם הקמפיין: <span id="summaryName">לא הוגדר</span></p>
+                                <p>מטרות: <span id="summaryGoals">לא נבחרו</span></p>
+                                <p>תקציב יומי: <span id="summaryBudget">לא הוגדר</span></p>
+                                <p>ערוצי שיווק: <span id="summaryChannels">0</span></p>
+                                <div id="channelBudgetSummary"></div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div id="statusMessage" class="status-message hidden"></div>
+
+    <footer>
+        <p>&copy; 2024 אינוויז'ן. כל הזכויות שמורות.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
