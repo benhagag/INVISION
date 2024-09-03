@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - מסך סטודיו 2.0</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>אינוויז'ן-מסך סטודיו</title>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="system/studio/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">איוויז'ן</div>
+            <ul class="centered-menu">
+                <li><a href="system/dashboard/index.html"><i class="fas fa-home" aria-hidden="true"></i> דף הבית</a></li>
+                <li><a href="system/campaign/index.html"><i class="fas fa-ad" aria-hidden="true"></i> צור קמפיין</a></li>
+                <li><a href="system/content/index.html"class="active" aria-current="page"><i class="fas fa-plus-circle" aria-hidden="true"></i> צור תוכן</a></li>
+                <li><a href="system/recommendations/index.html"><i class="fas fa-lightbulb" aria-hidden="true"></i> המלצות</a></li>
+                <li><a href="system/studio/index.html" ><i class="fas fa-paint-brush" aria-hidden="true"></i> סטודיו</a></li>
+                <li><a href="#"><i class="fas fa-cog" aria-hidden="true"></i> הגדרות</a></li>
+                <li><a href="#"><i class="fas fa-sign-out-alt" aria-hidden="true"></i> התנתק</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="platform-buttons">
+        <button class="platform-btn active" data-platform="video-editing">
+            <i class="fas fa-video"></i> עריכת סרטונים
+            <div class="dropdown-menu">
+                <a href="#" id="guided-path">מסלול מודרך</a>
+                <a href="#" id="auto-path">מסלול אוטומטי</a>
+            </div>
+        </button>
+        <button class="platform-btn" data-platform="image-design">
+            <i class="fas fa-image"></i> עיצוב תמונות
+        </button>
+        <button class="platform-btn" data-platform="content-creation">
+            <i class="fas fa-pen"></i> יצירת תוכן
+        </button>
+    </div>
+
+    <!-- Guided Path Section -->
+    <div id="guided-path-section" class="hidden-section">
+        <h2>מסלול מודרך - עריכת סרטונים</h2>
+        <div class="guided-steps">
+            <button class="guided-btn active" data-step="preparation">הכנה מקדימה</button>
+            <button class="guided-btn" data-step="template">תבנית</button>
+            <button class="guided-btn" data-step="audio">אודיו</button>
+            <button class="guided-btn" data-step="text">טקסט</button>
+            <button class="guided-btn" data-step="preview">תצוגה מקדימה</button>
+        </div>
+        <div id="guided-content">
+            <div id="preparation" class="guided-content-item">
+                <h3>הכנה מקדימה</h3>
+                <input type="file" multiple class="input-file" id="file-upload">
+                <div class="file-order">
+                    <!-- Drag and drop container -->
+                </div>
+                <div class="target-selection">
+                    <select class="select-target">
+                        <option>בחירת מטרה</option>
+                        <option>רילס עד 30 שניות</option>
+                        <option>סטורי עד 10 שניות</option>
+                        <option>סרטון עד דקה</option>
+                    </select>
+                </div>
+                <button class="next-step-btn">שלב הבא</button>
+            </div>
+            <div id="template" class="guided-content-item hidden">
+                <h3>תבנית</h3>
+                <p>נא לבחור תבנית רצויה כאשר כך יופיע תצוגת הסרטון הסופי</p>
+                <div class="filter-container">
+                    <input type="text" placeholder="סנן לפי נושא" id="template-filter">
+                    <button id="filter-btn">סנן</button>
+                </div>
+                <div class="template-selection">
+                    <div class="template-box">דוגמה 1</div>
+                    <div class="template-box">דוגמה 2</div>
+                    <div class="template-box">דוגמה 3</div>
+                    <div class="template-box">דוגמה 4</div>
+                    <div class="template-box">דוגמה 5</div>
+                    <div class="template-box">דוגמה 6</div>
+                </div>
+                <button class="next-step-btn">שלב הבא</button>
+            </div>
+            <div id="audio" class="guided-content-item hidden">
+                <h3>אודיו</h3>
+                <div class="audio-checkbox">
+                    <label><input type="checkbox" class="checkbox-audio"> אודיו לפי הסרטון</label>
+                </div>
+                <div class="audio-options">
+                    <!-- Audio examples -->
+                </div>
+                <input type="text" placeholder="הדבקת קישור לאודיו" class="input-audio">
+                <button class="next-step-btn">שלב הבא</button>
+            </div>
+            <div id="text" class="guided-content-item hidden">
+                <h3>טקסט</h3>
+                <div class="text-checkbox">
+                    <label><input type="checkbox" class="checkbox-text"> טקסט מוצג לפי אודיו</label>
+                </div>
+                <textarea placeholder="כתיבת טקסט רצוי" class="textarea-text" id="auto-resize-textarea"></textarea>
+                <button id="ai-suggestion-btn">הצעת מערכת</button>
+                <button class="next-step-btn">שלב הבא</button>
+            </div>
+            <div id="preview" class="guided-content-item hidden">
+                <h3>תצוגה מקדימה</h3>
+                <div class="guided-preview-video">
+                    <video controls></video>
+                </div>
+                <div class="final-buttons">
+                    <button class="save-btn">שמור לארכיון</button>
+                    <button class="download-btn">הורד</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Auto Path Section -->
+    <div id="auto-path-section" class="hidden-section">
+        <h2>מסלול אוטומטי - עריכת סרטונים</h2>
+        <div class="auto-steps">
+            <button class="auto-btn active" data-step="media-upload">העלאת מדיה ובחירת מטרה</button>
+            <button class="auto-btn" data-step="auto-preview">תצוגה מקדימה</button>
+            <button class="auto-btn" data-step="auto-finish">סיום</button>
+        </div>
+        <div id="auto-content">
+            <div id="media-upload" class="auto-content-item">
+                <input type="file" multiple class="input-file" id="auto-file-upload">
+                <div class="target-selection">
+                    <select class="select-target">
+                        <option>בחירת מטרה</option>
+                        <option>רילס עד 30 שניות</option>
+                        <option>סטורי עד 10 שניות</option>
+                        <option>סרטון עד דקה</option>
+                    </select>
+                </div>
+                <textarea placeholder="תיאור התוצר לפרטים" class="textarea-text"></textarea>
+                <button class="create-video-btn">צור סרטון</button>
+            </div>
+            <div id="auto-preview" class="auto-content-item hidden">
+                <h3>תצוגה מקדימה</h3>
+                <div class="preview-section">
+                    <button class="arrow-btn left"><i class="fas fa-chevron-left"></i></button>
+                    <div class="carousel-wrapper">
+                        <div class="preview-container">
+                            <h4>דוגמה 1</h4>
+                            <video controls></video>
+                        </div>
+                        <div class="preview-container">
+                            <h4>דוגמה 2</h4>
+                            <video controls></video>
+                        </div>
+                        <div class="preview-container">
+                            <h4>דוגמה 3</h4>
+                            <video controls></video>
+                        </div>
+                        <div class="preview-container">
+                            <h4>דוגמה 4</h4>
+                            <video controls></video>
+                        </div>
+                        <div class="preview-container">
+                            <h4>דוגמה 5</h4>
+                            <video controls></video>
+                        </div>
+                    </div>
+                    <button class="arrow-btn right"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <textarea placeholder="שיפורים נוספים" class="additional-improvements"></textarea>
+                <button class="continue-btn">המשך</button>
+            </div>
+            <div id="auto-finish" class="auto-content-item hidden">
+                <h3>סיום</h3>
+                <div class="auto-preview-video">
+                    <video controls></video>
+                </div>
+                <div class="final-buttons">
+                    <button class="save-btn">שמור לארכיון</button>
+                    <button class="download-btn">הורד</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Design Section -->
+    <div id="image-design-section" class="hidden-section">
+        <h2>עיצוב תמונה</h2>
+        <div class="image-steps">
+            <button class="image-btn active" data-step="image-preparation">הכנה מקדימה</button>
+            <button class="image-btn" data-step="image-preview">תצוגה מקדימה</button>
+            <button class="image-btn" data-step="image-finish">סיום</button>
+        </div>
+        <div id="image-content">
+            <div id="image-preparation" class="image-content-item">
+                <h3>הכנה מקדימה</h3>
+                <input type="file" multiple class="input-file" id="image-file-upload">
+                <textarea placeholder="הזן את הטקסט שברצונך להציג בתמונה" class="textarea-text" id="image-textarea"></textarea>
+                <button id="image-ai-suggestion-btn">הצעת מערכת</button>
+                <div class="text-checkbox">
+                    <label><input type="checkbox" class="checkbox-text"> לשלב את לוגו העסק בתמונה</label>
+                </div>
+                <button class="create-image-btn">צור תמונה</button>
+            </div>
+<div id="image-preview" class="image-content-item hidden">
+    <h3>תצוגה מקדימה</h3>
+    <div class="preview-section">
+        <button class="arrow-btn left"><i class="fas fa-chevron-left"></i></button>
+        <div class="carousel-wrapper">
+            <div class="preview-container">
+                <h4>דוגמה 1</h4>
+                <img src="path_to_real_image1.jpg" alt="דוגמה 1">
+            </div>
+            <div class="preview-container">
+                <h4>דוגמה 2</h4>
+                <img src="path_to_real_image2.jpg" alt="דוגמה 2">
+            </div>
+            <div class="preview-container">
+                <h4>דוגמה 3</h4>
+                <img src="path_to_real_image3.jpg" alt="דוגמה 3">
+            </div>
+            <div class="preview-container">
+                <h4>דוגמה 4</h4>
+                <img src="path_to_real_image4.jpg" alt="דוגמה 4">
+            </div>
+            <div class="preview-container">
+                <h4>דוגמה 5</h4>
+                <img src="path_to_real_image5.jpg" alt="דוגמה 5">
+            </div>
+        </div>
+        <button class="arrow-btn right"><i class="fas fa-chevron-right"></i></button>
+    </div>
+    <textarea placeholder="שיפורים נוספים" class="additional-improvements"></textarea>
+    <button class="save-and-continue-btn">שמור והמשך</button>
+</div>
+            <div id="image-finish" class="image-content-item hidden">
+                <h3>סיום</h3>
+                <div class="final-image-preview">
+                    <img src="final-example.jpg" alt="התמונה הסופית">
+                </div>
+                <div class="final-buttons">
+                    <button class="save-btn">שמור לארכיון</button>
+                    <button class="download-btn">הורד</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 אינוויז'ן. כל הזכויות שמורות.</p>
+    </footer>
+
+    <script src="system/studio/script.js"></script>
+</body>
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
