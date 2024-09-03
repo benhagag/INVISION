@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - מסך המלצות 2.0</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מערכת המלצות DAGFYM</title>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="system/recommendations/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">איוויז'ן</div>
+            <ul class="centered-menu">
+                <li><a href="system/dashboard/index.html"><i class="fas fa-home" aria-hidden="true"></i> דף הבית</a></li>
+                <li><a href="system/campaign/index.html"><i class="fas fa-ad" aria-hidden="true"></i> צור קמפיין</a></li>
+                <li><a href="system/content/index.html"class="active" aria-current="page"><i class="fas fa-plus-circle" aria-hidden="true"></i> צור תוכן</a></li>
+                <li><a href="system/recommendations/index.html"><i class="fas fa-lightbulb" aria-hidden="true"></i> המלצות</a></li>
+                <li><a href="#" ><i class="fas fa-paint-brush" aria-hidden="true"></i> סטודיו</a></li>
+                <li><a href="#"><i class="fas fa-cog" aria-hidden="true"></i> הגדרות</a></li>
+                <li><a href="#"><i class="fas fa-sign-out-alt" aria-hidden="true"></i> התנתק</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <header>
+            <h1>המלצות מערכת אינווייז'ן עבור DAGFYM</h1>
+            <div class="search-filter">
+                <input type="text" id="searchBar" placeholder="חפש המלצות...">
+                <select class="filter-select" id="campaign-filter">
+                    <option value="all" selected>כל הקמפיינים</option>
+                    <option value="summer2024">קמפיין קיץ 2024</option>
+                    <option value="newClasses">קמפיין שיעורים חדשים</option>
+                    <option value="personalTraining">קמפיין אימון אישי</option>
+                    <option value="nutrition">קמפיין תזונה נכונה</option>
+                </select>
+                <select class="filter-select" id="time-filter">
+                    <option value="all" selected>כל הזמנים</option>
+                    <option value="lastWeek">שבוע אחרון</option>
+                    <option value="lastMonth">חודש אחרון</option>
+                    <option value="customDate">תאריך ספציפי</option>
+                </select>
+                <select class="filter-select" id="status-filter">
+                    <option value="all" selected>כל הסטטוסים</option>
+                    <option value="done">בוצע</option>
+                    <option value="notDone">לא בוצע</option>
+                    <option value="inProgress">בתהליך</option>
+                </select>
+                <button class="filter-btn" id="archive-btn">ארכיון המלצות</button>
+                <button class="filter-btn" id="home-btn">חזרה לראשי</button>
+            </div>
+        </header>
+        <main>
+            <div class="main-content">
+                <section id="recommendations" class="recommendation">
+                    <h2>המלצות פעילות</h2>
+                    <div id="recommendation-cards"></div>
+                </section>
+                <section id="quick-tips" class="quick-tips">
+                    <h3><i class="fas fa-lightbulb"></i> טיפים מהירים</h3>
+                    <ul id="tips-list"></ul>
+                </section>
+                <section id="archive" class="archive" style="display: none;">
+                    <h2>ארכיון המלצות</h2>
+                    <div id="archive-container"></div>
+                </section>
+            </div>
+            <aside class="sidebar">
+                <div class="performance-summary">
+                    <h3><i class="fas fa-chart-line"></i> סיכום ביצועים</h3>
+                    <canvas id="performanceChart"></canvas>
+                </div>
+                <div class="upcoming-tasks">
+                    <h3><i class="fas fa-tasks"></i> משימות קרובות</h3>
+                    <ul id="tasks-list"></ul>
+                </div>
+            </aside>
+        </main>
+    </div>
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 InVision. כל הזכויות שמורות.</p>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="system/recommendations/script.js"></script>
+</body>
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
