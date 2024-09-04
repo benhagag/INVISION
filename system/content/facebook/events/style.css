@@ -1,0 +1,261 @@
+:root {
+    --primary-bg: #243665;
+    --secondary-bg: #2c4278;
+    --accent-color: #00bec6;
+    --text-color: #ffffff;
+    --card-bg: #1a2a4d;
+    --hover-color: #34518c;
+}
+
+body {
+    font-family: 'Assistant', sans-serif;
+    background-color: var(--primary-bg);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    direction: rtl;
+    text-align: right;
+}
+
+header {
+    background-color: var(--secondary-bg);
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.centered-menu {
+    list-style-type: none;
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+.centered-menu li {
+    display: inline-flex;
+    align-items: center;
+}
+
+nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+nav a i {
+    margin-left: 0.5rem;
+}
+
+nav a:hover, nav a.active {
+    background-color: var(--accent-color);
+    color: var(--primary-bg);
+}
+
+.main-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    padding: 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1, h2, h3 {
+    color: var(--accent-color);
+    text-align: center;
+}
+
+.info-container {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.benefits {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.benefit-item {
+    background-color: var(--accent-color);
+    color: var(--primary-bg);
+    padding: 10px;
+    border-radius: 8px;
+    margin: 5px;
+    flex-basis: calc(33% - 10px);
+    text-align: center;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.btn {
+    background-color: var(--accent-color);
+    color: var(--primary-bg);
+    border: none;
+    padding: 12px 24px;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 0 10px;
+    border-radius: 25px;
+}
+
+.btn:hover {
+    background-color: #00a0a8;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"], input[type="datetime-local"], input[type="file"], select, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--accent-color);
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+select option {
+    background-color: var(--primary-bg);
+    color: var(--text-color);
+}
+
+#event-form, #invision-prompt, #event-preview {
+    display: none;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+#event-preview {
+    border: 2px solid var(--accent-color);
+}
+
+/* Styles for the dropdown menu in the platform buttons */
+.platform-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.platform-btn {
+    background-color: var(--primary-bg); /* הצבע הכהה של הרקע */
+    color: var(--accent-color); /* צבע טורקיז */
+    border: 2px solid var(--accent-color); /* גבול בצבע טורקיז */
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    position: relative; /* להוסיף כדי לעזור עם המיקום היחסי של התפריט */
+}
+
+.platform-btn i {
+    font-size: 1.2rem;
+    color: var(--accent-color); /* צבע האייקון */
+}
+
+.platform-btn:hover {
+    background-color: #008c91; /* גוון כהה יותר של טורקיז */
+    color: var(--primary-bg);
+}
+
+.platform-btn.active {
+    background-color: var(--accent-color); /* טורקיז בהיר */
+    color: var(--primary-bg); /* צבע טקסט כהה */
+    border: none;
+}
+
+.platform-btn.active i {
+    color: var(--primary-bg); /* צבע האייקון */
+}
+.tooltip {
+    position: absolute;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    padding: 0.5rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: none;
+    z-index: 1000;
+    white-space: nowrap;
+    text-align: right;
+    width: auto;
+    width: 100%;
+}
+
+.tooltip ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tooltip li {
+    padding: 0.5rem 0;
+    cursor: pointer;
+}
+
+.tooltip li:hover {
+    background-color: var(--hover-color);
+    color: var(--accent-color);
+}
+footer {
+    background-color: #243665;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}

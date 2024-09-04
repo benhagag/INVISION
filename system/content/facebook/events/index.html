@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - אירוע בפייסבוק 2.0</title>
+  <link rel="stylesheet" href="./style.css">
+  <base href="https://benhagag.github.io/INVISION/">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>יצירת אירוע בפייסבוק</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="system/content/facebook/events/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">איוויז'ן</div>
+            <ul class="centered-menu">
+                <li><a href="system/dashboard/index.html"><i class="fas fa-home" aria-hidden="true"></i> דף הבית</a></li>
+                <li><a href="system/campaign/index.html"><i class="fas fa-ad" aria-hidden="true"></i> צור קמפיין</a></li>
+                <li><a href="system/content/index.html" class="active" aria-current="page"><i class="fas fa-plus-circle" aria-hidden="true"></i> צור תוכן</a></li>
+                <li><a href="system/recommendations/index.html"><i class="fas fa-lightbulb" aria-hidden="true"></i> המלצות</a></li>
+                <li><a href="system/studio/index.html" ><i class="fas fa-paint-brush" aria-hidden="true"></i> סטודיו</a></li>
+                <li><a href="system/settings/index.html"><i class="fas fa-cog" aria-hidden="true"></i> הגדרות</a></li>
+                <li><a href="#"><i class="fas fa-sign-out-alt" aria-hidden="true"></i> התנתק</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="platform-buttons">
+<button class="platform-btn active" data-platform="facebook"><i class="fab fa-facebook-f"></i> פייסבוק</button>
+        <button class="platform-btn" data-platform="instagram"><i class="fab fa-instagram"></i> אינסטגרם</button>
+        <button class="platform-btn" data-platform="tiktok"><i class="fab fa-tiktok"></i> טיקטוק</button>
+        <button class="platform-btn" data-platform="youtube"><i class="fab fa-youtube"></i> יוטיוב</button>
+        <button class="platform-btn" data-platform="twitter"><i class="fab fa-twitter"></i> טוויטר</button>
+        <button class="platform-btn" data-platform="landing-page"><i class="fas fa-file-alt"></i> דף נחיתה</button>
+    </div>
+
+    <div id="tooltip-container"></div>
+
+    <div class="container">
+        <h1>יצירת אירוע בפייסבוק</h1>
+        
+        <div class="info-container">
+            <h2>מהו אירוע בפייסבוק?</h2>
+            <p>אירוע בפייסבוק הוא כלי דיגיטלי המאפשר לך ליצור, לפרסם ולנהל אירועים באופן מקוון. זהו אמצעי יעיל לשיתוף מידע על אירועים עם קהל רחב ולעודד השתתפות.</p>
+            <h3>יתרונות השימוש באירוע כנכס שיווקי:</h3>
+            <div class="benefits">
+                <div class="benefit-item">הגעה לקהל רחב</div>
+                <div class="benefit-item">יצירת מודעות למותג</div>
+                <div class="benefit-item">אינטראקציה עם קהל</div>
+                <div class="benefit-item">מעקב אחר השתתפות</div>
+                <div class="benefit-item">יצירת תוכן ויראלי</div>
+                <div class="benefit-item">ניהול קל ונוח</div>
+            </div>
+        </div>
+
+        <div class="button-container">
+            <button class="btn" onclick="showManualForm()">יצירת אירוע ידני</button>
+            <button class="btn" onclick="showInvisionPrompt()">יצירת אירוע עם INVISION</button>
+        </div>
+
+        <div id="invision-prompt">
+            <h2>על איזה נושא תרצה ליצור את האירוע שלך?</h2>
+            <div class="form-group">
+                <input type="text" id="event-topic" placeholder="הזן את נושא האירוע">
+            </div>
+            <button class="btn" onclick="generateEvent()">צור דוגמה לאירוע</button>
+        </div>
+
+        <div id="event-preview">
+            <h2>דוגמה לאירוע בנושא שבחרת</h2>
+            <div id="preview-content"></div>
+            <button class="btn" onclick="editEvent()">ערוך אירוע</button>
+        </div>
+
+        <form id="event-form">
+            <div class="form-group">
+                <label for="event-name">שם האירוע:</label>
+                <input type="text" id="event-name" required>
+            </div>
+            <div class="form-group">
+                <label for="event-type">סוג האירוע:</label>
+                <select id="event-type">
+                    <option value="online">אירוע מקוון</option>
+                    <option value="inperson">אירוע פיזי</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="event-start">תאריך ושעת התחלה:</label>
+                <input type="datetime-local" id="event-start" required>
+            </div>
+            <div class="form-group">
+                <label for="event-end">תאריך ושעת סיום:</label>
+                <input type="datetime-local" id="event-end" required>
+            </div>
+            <div class="form-group">
+                <label for="event-timezone">אזור זמן:</label>
+                <select id="event-timezone">
+                    <option value="IST">ישראל (IST)</option>
+                    <option value="UTC">זמן אוניברסלי מתואם (UTC)</option>
+                    <option value="EST">זמן החוף המזרחי (EST)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="event-location">מיקום או קישור לשידור:</label>
+                <input type="text" id="event-location">
+            </div>
+            <div class="form-group">
+                <label for="event-description">תיאור האירוע:</label>
+                <textarea id="event-description" rows="4"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="event-privacy">פרטיות האירוע:</label>
+                <select id="event-privacy">
+                    <option value="public">ציבורי</option>
+                    <option value="friends">חברים</option>
+                    <option value="private">פרטי</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="event-image">תמונת האירוע:</label>
+                <input type="file" id="event-image" accept="image/*">
+            </div>
+            <div class="form-group">
+                <label for="event-links">קישורים נוספים:</label>
+                <input type="text" id="event-links" placeholder="קישור לאתר האירוע או לרכישת כרטיסים">
+            </div>
+            <div class="form-group">
+                <label for="event-tickets">פרטי כרטיסים:</label>
+                <textarea id="event-tickets" rows="3" placeholder="סוגי כרטיסים, מחירים, כמות"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="event-cohosts">שותפים לאירוע:</label>
+                <input type="text" id="event-cohosts" placeholder="הוסף משתמשים נוספים כמארחים שותפים">
+            </div>
+            <div class="form-group">
+                <label for="event-recurring">אירוע חוזר:</label>
+                <select id="event-recurring">
+                    <option value="none">לא חוזר</option>
+                    <option value="daily">יומי</option>
+                    <option value="weekly">שבועי</option>
+                    <option value="monthly">חודשי</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="event-questions">שאלות הרשמה:</label>
+                <textarea id="event-questions" rows="3" placeholder="הוסף שאלות למשתתפים"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="event-restrictions">הגבלות פרסום ותגובות:</label>
+                <select id="event-restrictions">
+                    <option value="all">הכל מותר</option>
+                    <option value="moderated">מנוהל</option>
+                    <option value="restricted">מוגבל</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="event-reminders">תזכורות והתראות:</label>
+                <input type="text" id="event-reminders" placeholder="הגדר תזכורות אוטומטיות">
+            </div>
+            <button type="submit" class="btn">צור אירוע</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 אינוויז'ן. כל הזכויות שמורות.</p>
+    </footer>
+    
+    <script src="system/content/facebook/events/script.js"></script>
+
+</body>
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
