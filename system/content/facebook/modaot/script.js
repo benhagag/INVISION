@@ -269,5 +269,5 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function selectOption(option) {
-    alert(`נבחרה האפשרות: ${option}`);
+    document.location.href = option;
 }

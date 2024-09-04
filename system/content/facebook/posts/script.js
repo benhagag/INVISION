@@ -438,6 +438,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function selectOption(option) {
-    document,location.href = option;
+    document.location.href = option;
     // alert(`נבחרה האפשרות: ${option}`);
 }
