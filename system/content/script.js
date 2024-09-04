@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 tooltipContainer.innerHTML = `
                     <div class="tooltip" style="top: ${rect.bottom + window.scrollY}px; left: ${rect.left + window.scrollX + (rect.width / 2) - (tooltipWidth / 2)}px; width: ${tooltipWidth}px;">
                         <ul>
-                            ${options.map(option => `<li onclick="selectOption('https://benhagag.github.io/INVISION/${option}', '${platform}')">${option}</li>`).join('')}
+                            ${options.map(option => `<li onclick="selectOption('https://benhagag.github.io/INVISION/${option.url}', '${platform}')">${option.value}</li>`).join('')}
                         </ul>
                     </div>
                 `;
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
             tooltipContainer.innerHTML = `
                 <div class="tooltip" style="top: ${rect.bottom + window.scrollY}px; left: ${rect.left + window.scrollX + (rect.width / 2) - (tooltipWidth / 2)}px; width: ${tooltipWidth}px;">
                     <ul>
-                        ${options.map(option => `<li onclick="selectOption('/${option.url}', '${platform}')">${option.value}</li>`).join('')}
+                        ${options.map(option => `<li onclick="selectOption('https://benhagag.github.io/INVISION/${option.url}', '${platform}')">${option.value}</li>`).join('')}
                     </ul>
                 </div>
             `;
@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function selectOption(option, platform) {
-    
+
     document,location.href = option;
 
     // מציאת הכפתור הרלוונטי והוספת מחלקת 'active'
