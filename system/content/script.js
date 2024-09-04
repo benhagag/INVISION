@@ -12,25 +12,25 @@ document.addEventListener('DOMContentLoaded', function() {
             {key: "shop", value: "חנות מקוונת"},
         ],
         instagram: [
-            'פוסט לפיד',
-            'פוסט לסטורי',
-            'IGTV'
+            {key: "posts", value: "פוסט לפיד"},
+            {key: "story", value: "פוסט לסטורי"},
+            {key: "igtv", value: "IGTV"},
         ],
         tiktok: [
-            'העלאת סרטון'
+            {key: "video", value: "העלאת סרטון"},
         ],
         youtube: [
-            'העלאת סרטון'
+            {key: "video", value: "העלאת סרטון"},
         ],
         twitter: [
-            'פרסום ציוץ'
+            {key: "tweet", value: "פרסום ציוץ"},
         ],
         google: [
-            'מודעות ממומנות'
+            {key: "modaot", value: "מודעות ממומנות"},
         ],
         'landing-page': [
-            'ראשי', 
-            'משני'
+            {key: "main", value: "ראשי"},
+            {key: "second", value: "משני"},
         ]
     };
 
