@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - חנות מקוונת בפייסבוק 2.0</title>
+  <link rel="stylesheet" href="./style.css">
+  <base href="https://benhagag.github.io/INVISION/">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>יצירת חנות מקוונת בפייסבוק - INVISION</title>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="system/content/facebook/shop/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">איוויז'ן</div>
+            <ul class="centered-menu">
+                <li><a href="system/dashboard/index.html"><i class="fas fa-home" aria-hidden="true"></i> דף הבית</a></li>
+                <li><a href="system/campaign/index.html"><i class="fas fa-ad" aria-hidden="true"></i> צור קמפיין</a></li>
+                <li><a href="system/content/index.html" class="active" aria-current="page"><i class="fas fa-plus-circle" aria-hidden="true"></i> צור תוכן</a></li>
+                <li><a href="system/recommendations/index.html"><i class="fas fa-lightbulb" aria-hidden="true"></i> המלצות</a></li>
+                <li><a href="system/studio/index.html" ><i class="fas fa-paint-brush" aria-hidden="true"></i> סטודיו</a></li>
+                <li><a href="system/settings/index.html"><i class="fas fa-cog" aria-hidden="true"></i> הגדרות</a></li>
+                <li><a href="#"><i class="fas fa-sign-out-alt" aria-hidden="true"></i> התנתק</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="platform-buttons">
+<button class="platform-btn active" data-platform="facebook"><i class="fab fa-facebook-f"></i> פייסבוק</button>
+        <button class="platform-btn" data-platform="instagram"><i class="fab fa-instagram"></i> אינסטגרם</button>
+        <button class="platform-btn" data-platform="tiktok"><i class="fab fa-tiktok"></i> טיקטוק</button>
+        <button class="platform-btn" data-platform="youtube"><i class="fab fa-youtube"></i> יוטיוב</button>
+        <button class="platform-btn" data-platform="twitter"><i class="fab fa-twitter"></i> טוויטר</button>
+        <button class="platform-btn" data-platform="landing-page"><i class="fas fa-file-alt"></i> דף נחיתה</button>
+    </div>
+
+    <div id="tooltip-container"></div> <!-- מיכל לתפריטים המוצגים תחת הפלטפורמות -->
+
+    <div class="container">
+        <h1>יצירת חנות מקוונת בפייסבוק</h1>
+        
+        <div class="advantages">
+            <h3>למה כדאי לפתוח חנות בפייסבוק?</h3>
+            <ul>
+                <li>גישה למיליארדי משתמשים פוטנציאליים</li>
+                <li>אינטגרציה מלאה עם פלטפורמת הפרסום של פייסבוק</li>
+                <li>ניהול קל ונוח של המלאי והמכירות</li>
+                <li>יכולת לשלב את החנות עם אינסטגרם</li>
+                <li>כלי אנליטיקה מתקדמים לניתוח ביצועי החנות</li>
+            </ul>
+        </div>
+
+        <div class="quick-setup">
+            <button onclick="quickSetup()">יצירת חנות מהירה עם INVISION</button>
+        </div>
+
+        <div class="progress-bar">
+            <div id="progress" class="progress"></div>
+        </div>
+
+        <div id="step1" class="step">
+            <h2>שלב 1: הגדרת החנות</h2>
+            <form id="shopSetupForm">
+<label for="shopName">
+    שם החנות:
+    <span class="tooltip">
+        <i class="fas fa-question-circle"></i>
+        <span class="tooltiptext">בחרו שם קצר וקליט שמייצג את המותג שלכם</span>
+    </span>
+</label>
+<input type="text" id="shopName" placeholder="לדוגמה: אופנה מהירה" required>                
+                <label for="shopDescription">
+                    תיאור החנות:
+                    <span class="tooltip">
+                        <i class="fas fa-question-circle"></i>
+                        <span class="tooltiptext">תארו בקצרה את החנות והמוצרים שלכם</span>
+                    </span>
+                </label>
+                <textarea id="shopDescription" placeholder="לדוגמה: החנות המובילה לאופנה עכשווית במחירים משתלמים" required></textarea>
+                
+                <label for="currency">
+                    מטבע:
+                    <span class="tooltip">
+                        <i class="fas fa-question-circle"></i>
+                        <span class="tooltiptext">בחרו את המטבע המתאים למדינת היעד שלכם</span>
+                    </span>
+                </label>
+                <select id="currency" required>
+                    <option value="ILS">שקל חדש (₪)</option>
+                    <option value="USD">דולר אמריקאי ($)</option>
+                    <option value="EUR">אירו (€)</option>
+                </select>
+                <button type="button" onclick="nextStep(1)">המשך לשלב הבא</button>
+            </form>
+        </div>
+
+        <div id="step2" class="step" style="display: none;">
+            <h2>שלב 2: הוספת מוצרים</h2>
+            <div id="productForms"></div>
+            <button type="button" onclick="addProductForm()">הוסף מוצר</button>
+            <div id="productList"></div>
+            <button type="button" onclick="prevStep(2)">חזור לשלב הקודם</button>
+            <button type="button" onclick="nextStep(2)">המשך לשלב הבא</button>
+        </div>
+
+        <div id="step3" class="step" style="display: none;">
+            <h2>שלב 3: הגדרות תשלום ומשלוח</h2>
+            <form id="paymentShippingForm">
+                <label for="paymentMethod">
+                    שיטת תשלום:
+                    <span class="tooltip">
+                        <i class="fas fa-question-circle"></i>
+                        <span class="tooltiptext">בחרו את שיטות התשלום שתרצו לקבל</span>
+                    </span>
+                </label>
+                <select id="paymentMethod" required>
+                    <option value="paypal">PayPal</option>
+                    <option value="creditCard">כרטיס אשראי</option>
+                    <option value="bankTransfer">העברה בנקאית</option>
+                </select>
+                
+                <label for="shippingMethod">
+                    שיטת משלוח:
+                    <span class="tooltip">
+                        <i class="fas fa-question-circle"></i>
+                        <span class="tooltiptext">בחרו את שיטות המשלוח שתציעו ללקוחות</span>
+                    </span>
+                </label>
+                <select id="shippingMethod" required>
+                    <option value="standard">משלוח רגיל</option>
+                    <option value="express">משלוח מהיר</option>
+                    <option value="pickup">איסוף עצמי</option>
+                </select>
+                
+                <button type="button" onclick="prevStep(3)">חזור לשלב הקודם</button>
+                <button type="button" onclick="nextStep(3)">המשך לשלב הבא</button>
+            </form>
+        </div>
+
+        <div id="step4" class="step" style="display: none;">
+            <h2>שלב 4: עיצוב החנות</h2>
+            <form id="shopDesignForm">
+                <label for="theme">
+                    ערכת נושא:
+                    <span class="tooltip">
+                        <i class="fas fa-question-circle"></i>
+                        <span class="tooltiptext">בחרו ערכת נושא שמתאימה לסגנון החנות שלכם</span>
+                    </span>
+                </label>
+                <select id="theme" required>
+                    <option value="modern">מודרני</option>
+                    <option value="classic">קלאסי</option>
+                    <option value="minimalist">מינימליסטי</option>
+                </select>
+                
+                <label for="primaryColor">
+                    צבע ראשי:
+                    <span class="tooltip">
+                        <i class="fas fa-question-circle"></i>
+                        <span class="tooltiptext">בחרו צבע ראשי שמתאים למותג שלכם</span>
+                    </span>
+                </label>
+                <input type="color" id="primaryColor" value="#00bec6">
+                
+                <label for="secondaryColor">
+                    צבע משני:
+                    <span class="tooltip">
+                        <i class="fas fa-question-circle"></i>
+                        <span class="tooltiptext">בחרו צבע משני שמשלים את הצבע הראשי</span>
+                    </span>
+                </label>
+                <input type="color" id="secondaryColor" value="#243665">
+                
+                <button type="button" onclick="prevStep(4)">חזור לשלב הקודם</button>
+                <button type="button" onclick="nextStep(4)">סיים והצג תצוגה מקדימה</button>
+            </form>
+        </div>
+
+        <div id="preview" class="step" style="display: none;">
+            <h2>תצוגה מקדימה של החנות</h2>
+            <div id="shopPreview"></div>
+            <button type="button" onclick="backToEditing()">חזור לעריכה</button>
+            <button type="button" onclick="showAdvancedEdit()">עריכה מתקדמת</button>
+            <button type="button" onclick="publishShop()">פרסם את החנות בפייסבוק</button>
+            <div id="advancedEditOptions" class="advanced-edit-options">
+                <button class="close-advanced-edit" onclick="closeAdvancedEdit()">×</button>
+                <h3>אפשרויות עריכה מתקדמות</h3>
+                <label for="advancedShopName">שם החנות:</label>
+                <input type="text" id="advancedShopName">
+                
+                <label for="advancedShopDescription">תיאור החנות:</label>
+                <textarea id="advancedShopDescription"></textarea>
+                
+                <label for="advancedPrimaryColor">צבע ראשי:</label>
+                <input type="color" id="advancedPrimaryColor">
+                
+                <label for="advancedSecondaryColor">צבע משני:</label>
+                <input type="color" id="advancedSecondaryColor">
+                
+                <label for="advancedFont">גופן:</label>
+                <select id="advancedFont">
+                    <option value="Assistant">Assistant</option>
+                    <option value="Arial">Arial</option>
+                    <option value="Helvetica">Helvetica</option>
+                    <option value="Times New Roman">Times New Roman</option>
+                </select>
+                
+                <h4>הוספת מוצר</h4>
+                <div id="advancedProductForms"></div>
+                <button type="button" onclick="addProductForm('advancedProductForms')">הוסף מוצר</button>
+                
+                <button type="button" onclick="applyAdvancedEdit()">החל שינויים</button>
+            </div>
+        </div>
+    </div>
+    
+        <footer>
+        <p>&copy; 2024 אינוויז'ן. כל הזכויות שמורות.</p>
+    </footer>
+  
+    <script src="system/content/facebook/shop/script.js"></script>
+</body>
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>

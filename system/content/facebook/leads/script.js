@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', function() {
             tooltipContainer.innerHTML = `
                 <div class="tooltip" style="top: ${rect.bottom + 5}px; left: ${rect.left + window.scrollX}px; min-width: ${rect.width}px;">
                     <ul>
-                    ${options.map(option => `<li onclick="selectOption('https://benhagag.github.io/INVISION/${option.url}')">${option.value}</li>`).join('')}
+                        ${options.map(option => `<li onclick="selectOption('https://benhagag.github.io/INVISION/${option.url}')">${option.value}</li>`).join('')}
                     </ul>
                 </div>
             `;
