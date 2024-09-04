@@ -105,7 +105,8 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function selectOption(option, platform) {
-    alert(`נבחרה האפשרות: ${option}`);
+    
+    document,location.href = option;
 
     // מציאת הכפתור הרלוונטי והוספת מחלקת 'active'
     const platformButtons = document.querySelectorAll('.platform-btn');

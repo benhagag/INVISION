@@ -362,13 +362,37 @@ document.addEventListener('DOMContentLoaded', function() {
     let activeButton;  // משתנה לשמירת הכפתור הפעיל
 
     const platformOptions = {
-        facebook: ['פוסטים', 'מודעות ממומנות', 'סטוריז', 'אירועים', 'טפסי לידים', 'חנות מקוונת'],
-        instagram: ['פוסט לפיד', 'פוסט לסטורי', 'IGTV'],
-        tiktok: ['העלאת סרטון'],
-        youtube: ['העלאת סרטון'],
-        twitter: ['פרסום ציוץ'],
-        'landing-page': ['ראשי', 'משני']
+        facebook: [
+            {url: "system/content/facebook/posts/index.html", value: "פוסטים"},
+            {url: "system/content/facebook/modaot/index.html", value: "מודעות ממומנות"},
+            {url: "system/content/facebook/story/index.html", value: "סטוריז"},
+            {url: "system/content/facebook/events/index.html", value: "אירועים"},
+            {url: "system/content/facebook/leads/index.html", value: "טפסי לידים"},
+            {url: "system/content/facebook/shop/index.html", value: "חנות מקוונת"},
+        ],
+        instagram: [
+            {url: "system/content/instagram/posts/index.html", value: "פוסט לפיד"},
+            {url: "system/content/instagram/story/index.html", value: "פוסט לסטורי"},
+            {url: "system/content/instagram/igtv/index.html", value: "IGTV"},
+        ],
+        tiktok: [
+            {url: "system/content/tiktok/video/index.html", value: "העלאת סרטון"},
+        ],
+        youtube: [
+            {url: "system/content/youtube/video/index.html", value: "העלאת סרטון"},
+        ],
+        twitter: [
+            {url: "system/content/twitter/tweet/index.html", value: "פרסום ציוץ"},
+        ],
+        google: [
+            {url: "system/content/google/modaot/index.html", value: "מודעות ממומנות"},
+        ],
+        'landing-page': [
+            {url: "system/content/landing-page/main/index.html", value: "ראשי"},
+            {url: "system/content/landing-page/second/index.html", value: "משני"},
+        ]
     };
+
 
     platformButtons.forEach(button => {
         button.addEventListener('mouseenter', function() {
@@ -380,7 +404,7 @@ document.addEventListener('DOMContentLoaded', function() {
             tooltipContainer.innerHTML = `
                 <div class="tooltip" style="top: ${rect.bottom + 5}px; left: ${rect.left + window.scrollX}px; min-width: ${rect.width}px;">
                     <ul>
-                        ${options.map(option => `<li onclick="selectOption('${option}')">${option}</li>`).join('')}
+                        ${options.map(option => `<li onclick="selectOption('https://benhagag.github.io/INVISION/${option}')">${option}</li>`).join('')}
                     </ul>
                 </div>
             `;
@@ -414,5 +438,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function selectOption(option) {
-    alert(`נבחרה האפשרות: ${option}`);
+    document,location.href = option;
+    // alert(`נבחרה האפשרות: ${option}`);
 }
