@@ -3,13 +3,41 @@ document.addEventListener('DOMContentLoaded', function() {
     const tooltipContainer = document.getElementById('tooltip-container');
 
     const platformOptions = {
-        facebook: ['פוסטים', 'מודעות ממומנות', 'סטוריז', 'אירועים', 'טפסי לידים', 'חנות מקוונת'],
-        instagram: ['פוסט לפיד', 'פוסט לסטורי', 'IGTV'],
-        tiktok: ['העלאת סרטון'],
-        youtube: ['העלאת סרטון'],
-        twitter: ['פרסום ציוץ'],
-        google: ['מודעות ממומנות'],
-        'landing-page': ['ראשי', 'משני']
+        facebook: [
+            'פוסטים', 
+            {"posts": "פוסטים"},
+            'מודעות ממומנות', 
+            {"modaot": "מודעות ממומנות"},
+            'סטוריז', 
+            {"story": "סטוריז"},
+            'אירועים', 
+            {"events": "אירועים"},
+            'טפסי לידים', 
+            {"leads": "טפסי לידים"},
+            'חנות מקוונת',
+            {"shop": "חנות מקוונת"},
+        ],
+        instagram: [
+            'פוסט לפיד',
+            'פוסט לסטורי',
+            'IGTV'
+        ],
+        tiktok: [
+            'העלאת סרטון'
+        ],
+        youtube: [
+            'העלאת סרטון'
+        ],
+        twitter: [
+            'פרסום ציוץ'
+        ],
+        google: [
+            'מודעות ממומנות'
+        ],
+        'landing-page': [
+            'ראשי', 
+            'משני'
+        ]
     };
 
     platformButtons.forEach(button => {
