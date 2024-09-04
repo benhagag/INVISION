@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - 2.0 מודעות ממומנות בפייסבוק</title>
+  <link rel="stylesheet" href="./style.css">
+  <base href="https://benhagag.github.io/INVISION/">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מערכת מודעות ממומנות בפייסבוק</title>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="system/content/facebook/modaot/style.css">
+</head>
+<body>
+<!-- הוספת קישור ל-CSS של Font Awesome -->
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+    <header>
+        <nav>
+            <div class="logo">איוויז'ן</div>
+            <ul class="centered-menu">
+                <li><a href="system/dashboard/index.html"><i class="fas fa-home" aria-hidden="true"></i> דף הבית</a></li>
+                <li><a href="system/campaign/index.html"><i class="fas fa-ad" aria-hidden="true"></i> צור קמפיין</a></li>
+                <li><a href="system/content/index.html" class="active" aria-current="page"><i class="fas fa-plus-circle" aria-hidden="true"></i> צור תוכן</a></li>
+                <li><a href="system/recommendations/index.html"><i class="fas fa-lightbulb" aria-hidden="true"></i> המלצות</a></li>
+                <li><a href="system/studio/index.html" ><i class="fas fa-paint-brush" aria-hidden="true"></i> סטודיו</a></li>
+                <li><a href="system/settings/index.html"><i class="fas fa-cog" aria-hidden="true"></i> הגדרות</a></li>
+                <li><a href="#"><i class="fas fa-sign-out-alt" aria-hidden="true"></i> התנתק</a></li>
+            </ul>
+        </nav>
+    </header>   <!-- שורת כפתורי הפלטפורמות -->
+    <div class="platform-buttons">
+<button class="platform-btn active" data-platform="facebook"><i class="fab fa-facebook-f"></i> פייסבוק</button>
+        <button class="platform-btn" data-platform="instagram"><i class="fab fa-instagram"></i> אינסטגרם</button>
+        <button class="platform-btn" data-platform="tiktok"><i class="fab fa-tiktok"></i> טיקטוק</button>
+        <button class="platform-btn" data-platform="youtube"><i class="fab fa-youtube"></i> יוטיוב</button>
+        <button class="platform-btn" data-platform="twitter"><i class="fab fa-twitter"></i> טוויטר</button>
+        <button class="platform-btn" data-platform="landing-page"><i class="fas fa-file-alt"></i> דף נחיתה</button>
+    </div>
+
+    <div id="tooltip-container"></div> <!-- מיכל לתפריטים המוצגים תחת הפלטפורמות -->
+
+    <div class="container">
+        <h1>מערכת מודעות ממומנות בפייסבוק</h1>
+        
+        <div class="info-box">
+            <h3>יתרונות מודעות ממומנות בפייסבוק</h3>
+            <ul>
+                <li><strong>פילוח מדויק:</strong> הגעה לקהל היעד המדויק שלך על בסיס דמוגרפיה, תחומי עניין והתנהגות.</li>
+                <li><strong>תקציב גמיש:</strong> שליטה מלאה על התקציב היומי והכולל של הקמפיין.</li>
+                <li><strong>מדידה ואופטימיזציה:</strong> מעקב אחר ביצועי המודעות בזמן אמת ואופטימיזציה לתוצאות טובות יותר.</li>
+                <li><strong>מגוון פורמטים:</strong> אפשרות לפרסם מודעות טקסט, תמונה, וידאו, קרוסלה ועוד.</li>
+                <li><strong>הגדלת החשיפה:</strong> הגעה למיליוני משתמשים פעילים בפייסבוק ואינסטגרם.</li>
+            </ul>
+        </div>
+
+        <div class="tab-container">
+            <div class="tab active" onclick="switchTab('create')">יצירת קמפיין</div>
+            <div class="tab" onclick="switchTab('manage')">ניהול קמפיינים</div>
+            <div class="tab" onclick="switchTab('report')">דוחות וניתוחים</div>
+        </div>
+
+        <div id="create-campaign" class="content-section active">
+            <h2>יצירת קמפיין חדש</h2>
+            <div class="campaign-type-toggle">
+                <button class="button active" onclick="toggleCampaignType('manual')">יצירה ידנית</button>
+                <button class="button secondary-button" onclick="toggleCampaignType('invision')">יצירה עם InVision</button>
+            </div>
+            <div id="manual-campaign">
+                <div class="input-group">
+                    <label for="campaign-name">שם הקמפיין:</label>
+                    <input type="text" id="campaign-name" placeholder="הזן שם לקמפיין">
+                </div>
+                <div class="input-group">
+                    <label for="campaign-objective">מטרת הקמפיין:</label>
+                    <select id="campaign-objective">
+                        <option value="awareness">מודעות למותג</option>
+                        <option value="traffic">תנועה לאתר</option>
+                        <option value="conversions">המרות</option>
+                        <option value="app-installs">התקנות אפליקציה</option>
+                        <option value="engagement">מעורבות</option>
+                        <option value="video-views">צפיות בוידאו</option>
+                        <option value="lead-generation">יצירת לידים</option>
+                        <option value="messages">הודעות</option>
+                        <option value="catalog-sales">מכירות מקטלוג</option>
+                        <option value="store-traffic">תנועה לחנות</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="target-audience">קהל יעד:</label>
+                    <textarea id="target-audience" rows="3" placeholder="תאר את קהל היעד שלך"></textarea>
+                </div>
+                <div class="input-group">
+                    <label for="campaign-budget">תקציב יומי (בש"ח):</label>
+                    <input type="number" id="campaign-budget" min="10" step="10" value="100">
+                </div>
+                <div class="input-group">
+                    <label for="campaign-duration">משך הקמפיין:</label>
+                    <select id="campaign-duration">
+                        <option value="3">3 ימים</option>
+                        <option value="7">שבוע</option>
+                        <option value="14">שבועיים</option>
+                        <option value="30">חודש</option>
+                        <option value="60">חודשיים</option>
+                        <option value="90">3 חודשים</option>
+                        <option value="continuous">רציף</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="ad-format">פורמט המודעה:</label>
+                    <select id="ad-format">
+                        <option value="image">תמונה</option>
+                        <option value="video">וידאו</option>
+                        <option value="carousel">קרוסלה</option>
+                        <option value="collection">אוסף</option>
+                        <option value="stories">סטוריז</option>
+                        <option value="messenger">מסנג'ר</option>
+                        <option value="playable">משחק ניתן לניגון</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="ad-text">טקסט המודעה:</label>
+                    <textarea id="ad-text" rows="3" placeholder="הזן את טקסט המודעה"></textarea>
+                </div>
+                <div class="input-group">
+                    <label for="call-to-action">כפתור פעולה:</label>
+                    <select id="call-to-action">
+                        <option value="shop-now">קנה עכשיו</option>
+                        <option value="learn-more">למד עוד</option>
+                        <option value="sign-up">הירשם</option>
+                        <option value="contact-us">צור קשר</option>
+                        <option value="book-now">הזמן עכשיו</option>
+                        <option value="download">הורד</option>
+                        <option value="watch-more">צפה עוד</option>
+                        <option value="apply-now">הגש מועמדות</option>
+                        <option value="get-offer">קבל הצעה</option>
+                    </select>
+                </div>
+                <button class="button" onclick="createCampaign('manual')">צור קמפיין</button>
+            </div>
+            <div id="invision-campaign" style="display: none;">
+                <div class="input-group">
+                    <label for="invision-prompt">תאר את הקמפיין הרצוי:</label>
+                    <textarea id="invision-prompt" rows="3" placeholder="תאר את מטרת הקמפיין, קהל היעד והמסר העיקרי"></textarea>
+                </div>
+                <button class="button" onclick="generateInVisionCampaign()">צור המלצת קמפיין</button>
+                <div id="invision-recommendation" style="display: none;">
+                    <h3>המלצת קמפיין InVision</h3>
+                    <div class="input-group">
+                        <label for="invision-campaign-name">שם הקמפיין:</label>
+                        <input type="text" id="invision-campaign-name" value="קמפיין קיץ 2023 - מבצעים חמים">
+                    </div>
+                    <div class="input-group">
+                        <label for="invision-campaign-objective">מטרת הקמפיין:</label>
+                        <select id="invision-campaign-objective">
+                            <option value="conversions" selected>המרות</option>
+                            <option value="traffic">תנועה לאתר</option>
+                            <option value="engagement">מעורבות</option>
+                            <option value="app-installs">התקנות אפליקציה</option>
+                            <option value="lead-generation">יצירת לידים</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="invision-target-audience">קהל יעד:</label>
+                        <textarea id="invision-target-audience" rows="3">גברים ונשים בגילאי 25-45, מתעניינים באופנה ולייף סטייל, גרים באזור המרכז</textarea>
+                    </div>
+                    <div class="input-group">
+                        <label for="invision-campaign-budget">תקציב יומי (בש"ח):</label>
+                        <input type="number" id="invision-campaign-budget" value="200">
+                    </div>
+                    <div class="input-group">
+                        <label for="invision-campaign-duration">משך הקמפיין:</label>
+                        <select id="invision-campaign-duration">
+                            <option value="7">שבוע</option>
+                            <option value="14">שבועיים</option>
+                            <option value="30" selected>חודש</option>
+                            <option value="60">חודשיים</option>
+                            <option value="90">3 חודשים</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="invision-ad-format">פורמט המודעה:</label>
+                        <select id="invision-ad-format">
+                            <option value="image">תמונה</option>
+                            <option value="video">וידאו</option>
+                            <option value="carousel" selected>קרוסלה</option>
+                            <option value="collection">אוסף</option>
+                            <option value="stories">סטוריז</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="invision-ad-text">טקסט המודעה:</label>
+                        <textarea id="invision-ad-text" rows="3">🌞 מבצעי הקיץ הגדולים שלנו כאן! 🏖️
+קולקציית הקיץ החדשה עכשיו במחירים מטורפים.
+הנחות של עד 50% על מגוון פריטים נבחרים.
+הזמינו עכשיו ותהנו ממשלוח חינם בקנייה מעל 300 ש"ח!
+#מבצעיקיץ #אופנה #שופינג</textarea>
+                    </div>
+                    <div class="input-group">
+                        <label for="invision-call-to-action">כפתור פעולה:</label>
+                        <select id="invision-call-to-action">
+                            <option value="shop-now" selected>קנה עכשיו</option>
+                            <option value="learn-more">למד עוד</option>
+                            <option value="get-offer">קבל הצעה</option>
+                            <option value="see-menu">ראה תפריט</option>
+                            <option value="book-now">הזמן עכשיו</option>
+                        </select>
+                    </div>
+                    <button class="button" onclick="createCampaign('invision')">צור קמפיין</button>
+                    <button class="button secondary-button" onclick="editInVisionCampaign()">ערוך המלצה</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="manage-campaigns" class="content-section">
+            <h2>ניהול קמפיינים קיימים</h2>
+            <div id="campaigns-list">
+                <!-- כאן תוצג רשימת הקמפיינים הקיימים -->
+            </div>
+        </div>
+
+        <div id="campaign-reports" class="content-section">
+            <h2>דוחות וניתוחים</h2>
+            <div class="input-group">
+                <label for="report-campaign">בחר קמפיין:</label>
+                <select id="report-campaign">
+                    <!-- כאן יוצגו הקמפיינים הקיימים -->
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="report-date-range">טווח תאריכים:</label>
+                <input type="date" id="report-start-date"> עד <input type="date" id="report-end-date">
+            </div>
+            <button class="button" onclick="generateReport()">הפק דוח</button>
+            <div id="report-results" class="preview">
+                <!-- כאן יוצגו תוצאות הדוח -->
+            </div>
+        </div>
+
+        <div id="status-message"></div>
+    </div>
+
+        <footer>
+        <p>&copy; 2024 אינוויז'ן. כל הזכויות שמורות.</p>
+    </footer>
+  
+    <script src="system/content/facebook/modaot/script.js"></script>
+</body>
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
