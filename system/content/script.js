@@ -4,18 +4,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const platformOptions = {
         facebook: [
-            'פוסטים', 
-            {"posts": "פוסטים"},
-            'מודעות ממומנות', 
-            {"modaot": "מודעות ממומנות"},
-            'סטוריז', 
-            {"story": "סטוריז"},
-            'אירועים', 
-            {"events": "אירועים"},
-            'טפסי לידים', 
-            {"leads": "טפסי לידים"},
-            'חנות מקוונת',
-            {"shop": "חנות מקוונת"},
+            {key: "posts", value: "פוסטים"},
+            {key: "modaot", value: "מודעות ממומנות"},
+            {key: "story", value: "סטוריז"},
+            {key: "events", value: "אירועים"},
+            {key: "leads", value: "טפסי לידים"},
+            {key: "shop", value: "חנות מקוונת"},
         ],
         instagram: [
             'פוסט לפיד',
@@ -54,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (options) {
 
                 console.log(options);
-                
+
                 const rect = this.getBoundingClientRect();
                 const tooltipWidth = rect.width; // רוחב התפריט זהה לרוחב הכפתור
 
@@ -88,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
             tooltipContainer.innerHTML = `
                 <div class="tooltip" style="top: ${rect.bottom + window.scrollY}px; left: ${rect.left + window.scrollX + (rect.width / 2) - (tooltipWidth / 2)}px; width: ${tooltipWidth}px;">
                     <ul>
-                        ${options.map(option => `<li onclick="selectOption('${option}', '${platform}')">${option}</li>`).join('')}
+                        ${options.map(option => `<li onclick="selectOption('${platform}/${option.key}', '${platform}')">${option.value}</li>`).join('')}
                     </ul>
                 </div>
             `;
