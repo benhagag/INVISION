@@ -1,0 +1,346 @@
+:root {
+    --primary-bg: #243665;
+    --secondary-bg: #2c4278;
+    --accent-color: #00bec6;
+    --text-color: #ffffff;
+    --card-bg: #1a2a4d;
+    --hover-color: #34518c;
+}
+
+body {
+    font-family: 'Assistant', sans-serif;
+    background-color: var(--primary-bg);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    direction: rtl;
+    text-align: right;
+}
+
+header {
+    background-color: var(--secondary-bg);
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.centered-menu {
+    list-style-type: none;
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+.centered-menu li {
+    display: inline-flex;
+    align-items: center;
+}
+
+nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+nav a i {
+    margin-left: 0.5rem;
+}
+
+nav a:hover, nav a.active {
+    background-color: var(--accent-color);
+    color: var(--primary-bg);
+}
+
+.platform-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+.platform-btn {
+    background-color: var(--primary-bg); /* הצבע הכהה של הרקע */
+    color: var(--accent-color); /* צבע טורקיז */
+    margin: 0; /* ביטול כל המרווחים בין הכפתורים */
+    border: 2px solid var(--accent-color); /* גבול בצבע טורקיז */
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    position: relative; /* להוסיף כדי לעזור עם המיקום היחסי של התפריט */
+}
+
+.platform-btn i {
+    font-size: 1.2rem;
+    color: var(--accent-color); /* צבע האייקון */
+}
+
+.platform-btn:hover {
+    background-color: #008c91; /* גוון כהה יותר של טורקיז */
+    color: var(--primary-bg);
+}
+
+.platform-btn.active {
+    background-color: var(--accent-color); /* טורקיז בהיר */
+    color: var(--primary-bg); /* צבע טקסט כהה */
+    border: none;
+}
+
+.platform-btn.active i {
+    color: var(--primary-bg); /* צבע האייקון */
+}
+.tooltip {
+    position: absolute;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    padding: 0.5rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    display: none;
+    z-index: 1000;
+    white-space: nowrap;
+    text-align: right;
+    width: auto; /* לרוחב אוטומטי */
+    min-width: 100%; /* לפחות ברוחב הכפתור */
+}
+
+.tooltip ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tooltip li {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+.tooltip li:hover {
+    background-color: var(--hover-color);
+    color: var(--accent-color);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.form-container, .preview-container {
+    flex: 1;
+    min-width: 300px;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+    color: #00bec6;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #00bec6;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+    max-height: 200px;
+}
+
+button {
+    background-color: #00bec6;
+    color: #ffffff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.1s;
+    display: block;
+    margin: 20px auto;
+}
+
+button:hover {
+    background-color: #008c98;
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+.preview-form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    color: #333;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.preview-form input, .preview-form select, .preview-form textarea {
+    margin-bottom: 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    color: #333;
+}
+
+.preview-description {
+    background-color: #f0f0f0;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.preview-description ul {
+    list-style-type: none;
+    padding-right: 0;
+}
+
+.preview-description li {
+    margin-bottom: 8px;
+}
+
+.preview-description i {
+    color: #00bec6;
+    margin-left: 8px;
+}
+
+.auto-fill-button {
+    background-color: #243665;
+    color: #ffffff;
+    padding: 12px 24px;
+    border: 2px solid #00bec6;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 20px;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+.auto-fill-button:hover {
+    background-color: #00bec6;
+    transform: translateY(-2px);
+}
+
+.auto-fill-button:active {
+    transform: translateY(0);
+}
+
+.infographic {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.infographic-item {
+    text-align: center;
+    width: 100px;
+    margin: 10px;
+}
+
+.infographic-item i {
+    font-size: 2.5em;
+    color: #00bec6;
+    margin-bottom: 10px;
+}
+
+.offer {
+    background-color: #ffeb3b;
+    color: #333;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+#aiDescription {
+    display: none;
+    margin-bottom: 20px;
+}
+
+.advanced-edit {
+    background-color: #4CAF50;
+    margin-top: 20px;
+}
+
+#advancedEditOptions {
+    display: none;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+}
+
+.color-picker {
+    width: 50px;
+    height: 30px;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+}
+
+.privacy-policy {
+    font-size: 12px;
+    margin-top: 10px;
+    color: #666;
+}
+footer {
+    background-color: #243665;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}
