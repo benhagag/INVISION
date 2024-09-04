@@ -52,6 +52,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const platform = this.getAttribute('data-platform');
             const options = platformOptions[platform];
             if (options) {
+
+                console.log(options);
+                
                 const rect = this.getBoundingClientRect();
                 const tooltipWidth = rect.width; // רוחב התפריט זהה לרוחב הכפתור
 
