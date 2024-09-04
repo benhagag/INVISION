@@ -4,33 +4,33 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const platformOptions = {
         facebook: [
-            {key: "posts", value: "פוסטים"},
-            {key: "modaot", value: "מודעות ממומנות"},
-            {key: "story", value: "סטוריז"},
-            {key: "events", value: "אירועים"},
-            {key: "leads", value: "טפסי לידים"},
-            {key: "shop", value: "חנות מקוונת"},
+            {url: "system/content/facebook/posts/index.html", value: "פוסטים"},
+            {url: "system/content/facebook/modaot/index.html", value: "מודעות ממומנות"},
+            {url: "system/content/facebook/story/index.html", value: "סטוריז"},
+            {url: "system/content/facebook/events/index.html", value: "אירועים"},
+            {url: "system/content/facebook/leads/index.html", value: "טפסי לידים"},
+            {url: "system/content/facebook/shop/index.html", value: "חנות מקוונת"},
         ],
         instagram: [
-            {key: "posts", value: "פוסט לפיד"},
-            {key: "story", value: "פוסט לסטורי"},
-            {key: "igtv", value: "IGTV"},
+            {url: "system/content/instagram/posts/index.html", value: "פוסט לפיד"},
+            {url: "system/content/instagram/story/index.html", value: "פוסט לסטורי"},
+            {url: "system/content/instagram/igtv/index.html", value: "IGTV"},
         ],
         tiktok: [
-            {key: "video", value: "העלאת סרטון"},
+            {url: "system/content/tiktok/video/index.html", value: "העלאת סרטון"},
         ],
         youtube: [
-            {key: "video", value: "העלאת סרטון"},
+            {url: "system/content/youtube/video/index.html", value: "העלאת סרטון"},
         ],
         twitter: [
-            {key: "tweet", value: "פרסום ציוץ"},
+            {url: "system/content/twitter/tweet/index.html", value: "פרסום ציוץ"},
         ],
         google: [
-            {key: "modaot", value: "מודעות ממומנות"},
+            {url: "system/content/google/modaot/index.html", value: "מודעות ממומנות"},
         ],
         'landing-page': [
-            {key: "main", value: "ראשי"},
-            {key: "second", value: "משני"},
+            {url: "system/content/landing-page/main/index.html", value: "ראשי"},
+            {url: "system/content/landing-page/second/index.html", value: "משני"},
         ]
     };
 
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 tooltipContainer.innerHTML = `
                     <div class="tooltip" style="top: ${rect.bottom + window.scrollY}px; left: ${rect.left + window.scrollX + (rect.width / 2) - (tooltipWidth / 2)}px; width: ${tooltipWidth}px;">
                         <ul>
-                            ${options.map(option => `<li onclick="selectOption('${option}', '${platform}')">${option}</li>`).join('')}
+                            ${options.map(option => `<li onclick="selectOption('https://benhagag.github.io/INVISION/${option}', '${platform}')">${option}</li>`).join('')}
                         </ul>
                     </div>
                 `;
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
             tooltipContainer.innerHTML = `
                 <div class="tooltip" style="top: ${rect.bottom + window.scrollY}px; left: ${rect.left + window.scrollX + (rect.width / 2) - (tooltipWidth / 2)}px; width: ${tooltipWidth}px;">
                     <ul>
-                        ${options.map(option => `<li onclick="selectOption('${platform}/${option.key}', '${platform}')">${option.value}</li>`).join('')}
+                        ${options.map(option => `<li onclick="selectOption('/${option.url}', '${platform}')">${option.value}</li>`).join('')}
                     </ul>
                 </div>
             `;
