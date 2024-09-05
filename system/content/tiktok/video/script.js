@@ -418,5 +418,5 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function selectOption(option) {
-    window.location.href = option
+    window.location.href = option;
 }
