@@ -1,0 +1,629 @@
+:root {
+    --primary-bg: #243665;
+    --secondary-bg: #2c4278;
+    --accent-color: #00bec6;
+    --text-color: #ffffff;
+    --card-bg: #1a2a4d;
+    --hover-color: #34518c;
+}
+
+body {
+    font-family: 'Assistant', sans-serif;
+    background-color: var(--primary-bg);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    direction: rtl;
+    text-align: right;
+}
+header {
+    background-color: var(--secondary-bg);
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.centered-menu {
+    list-style-type: none;
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+.centered-menu li {
+    display: inline-flex;
+    align-items: center;
+}
+
+nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+nav a i {
+    margin-left: 0.5rem;
+}
+
+nav a:hover, nav a.active {
+    background-color: var(--accent-color);
+    color: var(--primary-bg);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+h1, h2, h3 {
+    color: #00bec6;
+}
+
+.info-box, .seo-keywords-box {
+    background-color: rgba(0, 190, 198, 0.1);
+    border-left: 4px solid #00bec6;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+.seo-keywords-box {
+    display: flex;
+    justify-content: space-between;
+}
+
+.keywords-section, .seo-meter-section {
+    width: 48%;
+}
+
+.keyword {
+    display: inline-block;
+    margin: 5px;
+    padding: 5px 10px;
+    background-color: #00bec6;
+    color: #243665;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.seo-meter {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    height: 20px;
+}
+
+.seo-meter-fill {
+    height: 100%;
+    background-color: #00bec6;
+    width: 0%;
+    transition: width 0.5s ease-in-out;
+}
+
+.seo-score {
+    text-align: center;
+    font-weight: bold;
+    margin-top: 5px;
+    color: #00bec6;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    gap: 20px;
+}
+
+.post-creation-container, .preview-container {
+    width: 45%;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin: 0;
+}
+
+.post-creation-container {
+    border-right: 2px solid #00bec6;
+}
+
+.preview-container {
+    border-left: 2px solid #00bec6;
+    position: relative;
+}
+
+.tab-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.tab {
+    width: 48%;
+    padding: 10px;
+    background-color: #243665;
+    border: 1px solid #00bec6;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: bold;
+    color: #00bec6;
+}
+
+.tab.active {
+    background-color: #00bec6;
+    color: #243665;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"], textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 0;
+    border: 1px solid #00bec6;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    display: block;
+    box-sizing: border-box;
+}
+
+input[type="text"]:focus, textarea:focus {
+    border-color: #00ffec;
+    outline: none;
+    box-shadow: 0 0 5px #00ffec;
+}
+
+input[type="text"]::placeholder,
+textarea::placeholder {
+    color: #b0b0b0;
+}
+
+textarea#ai-content {
+    height: 100px;
+}
+
+.post-additions {
+    margin-top: 20px;
+}
+
+.addition-buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.addition-btn {
+    background-color: #00bec6;
+    color: #243665;
+    border: none;
+    padding: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s;
+    position: relative;
+}
+
+.addition-btn:hover {
+    background-color: #008c91;
+}
+
+.addition-btn:hover::after {
+    content: attr(title);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #00bec6;
+    color: #243665;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.preview-toggle {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.preview-btn {
+    padding: 10px 20px;
+    background-color: #243665;
+    border: 1px solid #00bec6;
+    color: #00bec6;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.preview-btn.active {
+    background-color: #00bec6;
+    color: #243665;
+}
+
+.preview-desktop, .preview-mobile {
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.preview-mobile {
+    max-width: 375px;
+    border: 10px solid #000;
+    border-radius: 30px;
+}
+
+.instagram-header {
+    background-color: #ffffff;
+    color: #262626;
+    padding: 10px;
+    font-weight: bold;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.instagram-post {
+    padding: 12px;
+    color: #262626;
+}
+
+.instagram-post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.instagram-post-header img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
+.instagram-post-header-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.instagram-post-header-name {
+    font-weight: bold;
+}
+
+.instagram-post-header-time {
+    color: #8e8e8e;
+    font-size: 12px;
+}
+
+.instagram-post-content {
+    margin-bottom: 10px;
+}
+
+.instagram-post-actions {
+    border-top: 1px solid #dbdbdb;
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.instagram-action {
+    color: #262626;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.action-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0 10px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.button.primary {
+    background-color: #00bec6;
+    color: #243665;
+}
+
+.button.secondary {
+    background-color: #243665;
+    color: #00bec6;
+    border: 1px solid #00bec6;
+}
+
+.button:hover {
+    opacity: 0.9;
+}
+
+.button.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+#show-recommendations {
+    position: relative;
+}
+
+.recommendation-count {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: #ff4500;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+}
+
+.recommendations-container {
+    margin-top: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.recommendations-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.recommendations-list, .improved-preview {
+    width: 48%;
+}
+
+.recommendation-item {
+    background-color: rgba(0, 190, 198, 0.1);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.recommendation-item label {
+    display: flex;
+    align-items: center;
+}
+
+.recommendation-item input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.improved-preview .instagram-post {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 12px;
+    color: #1c1e21;
+}
+
+.improved-preview .post-additions {
+    margin-top: 10px;
+}
+
+.media-preview {
+    max-width: 100%;
+    max-height: 300px; /* Limit the height of the preview */
+    margin-top: 10px;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+.media-preview img, .media-preview video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    max-width: 300px; /* Limit the width of the media */
+    max-height: 300px; /* Limit the height of the media */
+    display: block;
+    margin: 0 auto;
+}
+
+.preview-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    font-size: 18px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.preview-arrow.left {
+    left: 10px;
+}
+
+.preview-arrow.right {
+    right: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+.emoji-picker {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    padding: 10px;
+    z-index: 1000;
+}
+
+.emoji-picker .emoji {
+    font-size: 24px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+#recommendations-loading p {
+    margin: 10px 0;
+    font-style: italic;
+}
+
+.tooltip-bubble {
+    position: absolute;
+    background-color: #00bec6;
+    color: #243665;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    white-space: nowrap;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.2s linear;
+}
+
+.button.disabled:hover .tooltip-bubble {
+    visibility: visible;
+    opacity: 1;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.navigation-buttons {
+    justify-content: flex-start;
+}
+
+.platform-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.platform-btn {
+    background-color: var(--primary-bg); /* הצבע הכהה של הרקע */
+    color: var(--accent-color); /* צבע טורקיז */
+    border: 2px solid var(--accent-color); /* גבול בצבע טורקיז */
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    position: relative; /* להוסיף כדי לעזור עם המיקום היחסי של התפריט */
+}
+
+.platform-btn i {
+    font-size: 1.2rem;
+    color: var(--accent-color); /* צבע האייקון */
+}
+
+.platform-btn:hover {
+    background-color: #008c91; /* גוון כהה יותר של טורקיז */
+    color: var(--primary-bg);
+}
+
+.platform-btn.active {
+    background-color: var(--accent-color); /* טורקיז בהיר */
+    color: var(--primary-bg); /* צבע טקסט כהה */
+    border: none;
+}
+
+.platform-btn.active i {
+    color: var(--primary-bg); /* צבע האייקון */
+}
+
+.tooltip {
+    position: absolute;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    padding: 0.5rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    display: none;
+    z-index: 1000;
+    white-space: nowrap;
+    text-align: right;
+    width: auto; /* לרוחב אוטומטי */
+    min-width: 100%; /* לפחות ברוחב הכפתור */
+}
+
+.tooltip ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tooltip li {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+.tooltip li:hover {
+    background-color: var(--hover-color);
+    color: var(--accent-color);
+}
+footer {
+    background-color: #243665;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}
