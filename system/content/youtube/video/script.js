@@ -382,5 +382,6 @@ function closeRecommendations() {
 }
 
 function selectOption(option) {
-    alert(`נבחרה האפשרות: ${option}`);
+    window.location.href = option;
+    
 }

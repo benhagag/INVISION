@@ -20,7 +20,7 @@ function updatePreview() {
         previewText.textContent = document.getElementById('ai-content').value;
     }
     updateSEOScore();
-    updateImprovedPreview();
+    updateMediaPreview(); 
 }
 
 function updateSEOScore() {
@@ -42,17 +42,15 @@ function togglePreviewMode(mode) {
 function generateAIContent() {
     const topic = document.getElementById('ai-topic').value;
     const content = document.getElementById('ai-content').value;
-    const audience = document.getElementById('ai-audience').value;
 
-    if (!topic || !content || !audience) {
+    if (!topic || !content) {
         document.getElementById('ai-error').textContent = 'אנא מלא את כל השדות';
         return;
     }
 
     document.getElementById('ai-error').textContent = '';
     
-    // Simulating AI content generation
-    const generatedContent = `חדש ב${topic}! 🎉\n${content}\nמיועד במיוחד ל${audience}.\nבואו לבקר אותנו ותיהנו מהצעות מיוחדות!`;
+    const generatedContent = `חדש ב${topic}! 🎉\n${content}\nבואו לבקר אותנו ותיהנו מהצעות מיוחדות!`;
     
     document.getElementById('ai-content').value = generatedContent;
     updatePreview();
@@ -148,28 +146,30 @@ function updateImprovedPreview() {
         }
     });
 
-    // הוסף האשטגים בסוף התוכן
     improvedText += hashtags;
-    // הוסף קריאה לפעולה בסוף התוכן
     improvedText += cta;
 
     document.getElementById('improved-preview').innerHTML = `
-        <div class="tiktok-post-header">
+        <div class="twitter-post-header">
             <img src="https://via.placeholder.com/40" alt="תמונת פרופיל">
-            <div class="tiktok-post-header-info">
-                <div class="tiktok-post-header-name">השם שלך</div>
-                <div class="tiktok-post-header-time">לפני שעה</div>
+            <div class="twitter-post-header-info">
+                <div class="twitter-post-header-name">השם שלך</div>
+                <div class="twitter-post-header-time">לפני שעה</div>
             </div>
         </div>
-        <div class="tiktok-post-content">
+        <div class="twitter-post-content">
             <p>${improvedText}</p>
         </div>
-        <div class="tiktok-post-actions">
-            <span class="tiktok-action">❤️ לייק</span>
-            <span class="tiktok-action">💬 תגובה</span>
-            <span class="tiktok-action">➡️ שיתוף</span>
+        <div id="improved-media-preview" class="media-preview"></div>
+        <div class="twitter-post-actions">
+            <span class="twitter-action">❤️ לייק</span>
+            <span class="twitter-action">💬 תגובה</span>
+            <span class="twitter-action">🔁 ריטוויט</span>
+            <span class="twitter-action">📤 שתף</span>
         </div>
     `;
+
+    updateMediaPreview(); 
 }
 
 function applyRecommendations() {
@@ -215,56 +215,27 @@ function addMedia(type) {
 
 function updateMediaPreview() {
     const mediaPreview = document.getElementById('media-preview');
+    const improvedMediaPreview = document.getElementById('improved-media-preview'); 
+
     mediaPreview.innerHTML = '';
+    improvedMediaPreview.innerHTML = ''; 
+
     if (mediaFiles.length > 0) {
         const currentMedia = mediaFiles[currentMediaIndex];
-        if (currentMedia.type === 'image') {
-            const img = document.createElement('img');
-            img.src = currentMedia.src;
-            img.alt = "תמונה שנבחרה";
-            mediaPreview.appendChild(img);
-        } else {
-            const video = document.createElement('video');
-            video.src = currentMedia.src;
-            video.controls = true;
-            mediaPreview.appendChild(video);
+        const mediaElement = currentMedia.type === 'image' ? document.createElement('img') : document.createElement('video');
+        
+        mediaElement.src = currentMedia.src;
+        mediaElement.alt = "תמונה שנבחרה";
+        if (currentMedia.type === 'video') {
+            mediaElement.controls = true;
         }
-        mediaPreview.appendChild(createPreviewArrows());
+
+        mediaElement.style.maxWidth = '100%'; 
+        mediaElement.style.maxHeight = '300px'; 
+
+        mediaPreview.appendChild(mediaElement);
+        improvedMediaPreview.appendChild(mediaElement.cloneNode(true)); 
     }
-}
-
-function createPreviewArrows() {
-    const arrowsContainer = document.createElement('div');
-    arrowsContainer.className = 'preview-arrows';
-    
-    const leftArrow = document.createElement('button');
-    leftArrow.className = 'preview-arrow left';
-    leftArrow.innerHTML = '&#10094;';
-    leftArrow.onclick = () => changePreviewMedia(-1);
-    
-    const rightArrow = document.createElement('button');
-    rightArrow.className = 'preview-arrow right';
-    rightArrow.innerHTML = '&#10095;';
-    rightArrow.onclick = () => changePreviewMedia(1);
-    
-    arrowsContainer.appendChild(leftArrow);
-    arrowsContainer.appendChild(rightArrow);
-    
-    return arrowsContainer;
-}
-
-function changePreviewMedia(direction) {
-    currentMediaIndex += direction;
-    if (currentMediaIndex < 0) {
-        currentMediaIndex = mediaFiles.length - 1;
-    } else if (currentMediaIndex >= mediaFiles.length) {
-        currentMediaIndex = 0;
-    }
-    updateMediaPreview();
-}
-
-function tagPeople() {
-    alert('פונקציונליות תיוג אנשים תיושם בעתיד');
 }
 
 function openEmojiPicker() {
@@ -293,54 +264,39 @@ function addLocation() {
     alert('פונקציונליות הוספת מיקום תיושם בעתיד');
 }
 
-function addGIF() {
-    alert('פונקציונליות הוספת GIF תיושם בעתיד');
+function tagPeople() {
+    alert('פונקציונליות תיוג אנשים תיושם בעתיד');
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    const keywords = ['מבצע מיוחד', 'חדש על המדף', 'המלצת השבוע', 'מהדורה מוגבלת', 'הכי נמכר'];
-    const keywordList = document.getElementById('keyword-list');
-    keywords.forEach(keyword => {
-        const keywordElement = document.createElement('span');
-        keywordElement.classList.add('keyword');
-        keywordElement.textContent = keyword;
-        keywordElement.onclick = () => addKeyword(keyword);
-        keywordList.appendChild(keywordElement);
-    });
-    updatePreview();
-
     const showRecommendationsBtn = document.getElementById('show-recommendations');
-    showRecommendationsBtn.addEventListener('mouseenter', function() {
-        if (this.classList.contains('disabled')) {
-            let tooltip = this.querySelector('.tooltip-bubble');
-            if (!tooltip) {
-                tooltip = document.createElement('div');
-                tooltip.classList.add('tooltip-bubble');
-                tooltip.textContent = 'יש לפרסם את הפוסט לקבלת המלצות';
-                this.appendChild(tooltip);
-            }
+    
+    showRecommendationsBtn.addEventListener('mouseenter', function(event) {
+        if (showRecommendationsBtn.classList.contains('disabled')) {
+            let tooltip = document.createElement('div');
+            tooltip.classList.add('tooltip-bubble');
+            tooltip.textContent = 'יש לפרסם את הציוץ לקבלת המלצות';
+            tooltip.style.position = 'absolute';
+            tooltip.style.bottom = '120%';
+            tooltip.style.left = '50%';
+            tooltip.style.transform = 'translateX(-50%)';
+            tooltip.style.visibility = 'visible';
+            tooltip.style.opacity = '1';
+            showRecommendationsBtn.appendChild(tooltip);
         }
     });
 
     showRecommendationsBtn.addEventListener('mouseleave', function() {
-        const tooltip = this.querySelector('.tooltip-bubble');
+        const tooltip = showRecommendationsBtn.querySelector('.tooltip-bubble');
         if (tooltip) {
             tooltip.remove();
         }
     });
 });
-
-function addKeyword(keyword) {
-    const textArea = currentTab === 'manual' ? document.getElementById('manual-text') : document.getElementById('ai-content');
-    textArea.value += (textArea.value ? ' ' : '') + keyword;
-    updatePreview();
-}
-// Functionality for platform buttons with tooltips
+// קוד לתפריט הנפתח
 document.addEventListener('DOMContentLoaded', function() {
     const platformButtons = document.querySelectorAll('.platform-btn');
     const tooltipContainer = document.getElementById('tooltip-container');
-    let tooltip;  // משתנה לשמירת ההפניה לתפריט הנפתח
-    let activeButton;  // משתנה לשמירת הכפתור הפעיל
 
     const platformOptions = {
         facebook: [
@@ -376,47 +332,38 @@ document.addEventListener('DOMContentLoaded', function() {
 
     platformButtons.forEach(button => {
         button.addEventListener('mouseenter', function() {
-            activeButton = this;  // שמירת הכפתור הפעיל
             const platform = this.getAttribute('data-platform');
             const options = platformOptions[platform];
             const rect = this.getBoundingClientRect();
+            const tooltipWidth = rect.width;
 
             tooltipContainer.innerHTML = `
-                <div class="tooltip" style="top: ${rect.bottom + 5}px; left: ${rect.left + window.scrollX}px; min-width: ${rect.width}px;">
+                <div class="tooltip" style="top: ${rect.bottom + window.scrollY}px; left: ${rect.left + window.scrollX}px; width: ${tooltipWidth}px;">
                     <ul>
                         ${options.map(option => `<li onclick="selectOption('https://benhagag.github.io/INVISION/${option.url}')">${option.value}</li>`).join('')}
                     </ul>
                 </div>
             `;
-
-            tooltip = tooltipContainer.querySelector('.tooltip');
+            const tooltip = tooltipContainer.querySelector('.tooltip');
             tooltip.style.display = 'block';
 
-            // שמירת התפריט הנפתח והוספת מאזיני אירועים
-            tooltip.addEventListener('mouseenter', function() {
-                tooltip.style.display = 'block';
-            });
+            const closeTooltip = () => {
+                tooltip.style.display = 'none';
+            };
 
             tooltip.addEventListener('mouseleave', closeTooltip);
-        });
 
-        button.addEventListener('mouseleave', function() {
-            setTimeout(() => {
-                if (!tooltip.matches(':hover') && !activeButton.matches(':hover')) {
-                    closeTooltip();
-                }
-            }, 100);
+            button.addEventListener('mouseleave', function() {
+                setTimeout(() => {
+                    if (!tooltip.matches(':hover') && !button.matches(':hover')) {
+                        closeTooltip();
+                    }
+                }, 100);
+            });
         });
     });
-
-    function closeTooltip() {
-        if (tooltip) {
-            tooltip.style.display = 'none';
-            activeButton = null;  // איפוס הכפתור הפעיל
-        }
-    }
 });
 
 function selectOption(option) {
-    window.location.href = option
+    window.location.href  = option;
 }
