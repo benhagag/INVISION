@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
         instagram: [
             {url: "system/content/instagram/posts/index.html", value: "פוסט לפיד"},
             {url: "system/content/instagram/story/index.html", value: "פוסט לסטורי"},
-            {url: "system/content/instagram/igtv/index.html", value: "Reels"},
+            {url: "system/content/instagram/reels/index.html", value: "Reels"},
         ],
         tiktok: [
             {url: "system/content/tiktok/video/index.html", value: "העלאת סרטון"},
