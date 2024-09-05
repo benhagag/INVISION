@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - רילס לאינסטגרם 2.0</title>
+  <link rel="stylesheet" href="./style.css">
+  <base href="https://benhagag.github.io/INVISION/">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>העלאת Reels לאינסטגרם</title>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="system/content/instagram/reels/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">איוויז'ן</div>
+            <ul class="centered-menu">
+                <li><a href="system/dashboard/index.html"><i class="fas fa-home" aria-hidden="true"></i> דף הבית</a></li>
+                <li><a href="system/campaign/index.html"><i class="fas fa-ad" aria-hidden="true"></i> צור קמפיין</a></li>
+                <li><a href="system/content/index.html" class="active" aria-current="page"><i class="fas fa-plus-circle" aria-hidden="true"></i> צור תוכן</a></li>
+                <li><a href="system/recommendations/index.html"><i class="fas fa-lightbulb" aria-hidden="true"></i> המלצות</a></li>
+                <li><a href="system/studio/index.html" ><i class="fas fa-paint-brush" aria-hidden="true"></i> סטודיו</a></li>
+                <li><a href="system/settings/index.html"><i class="fas fa-cog" aria-hidden="true"></i> הגדרות</a></li>
+                <li><a href="#"><i class="fas fa-sign-out-alt" aria-hidden="true"></i> התנתק</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- שורת כפתורי הפלטפורמות -->
+    <div class="platform-buttons">
+        <button class="platform-btn" data-platform="facebook"><i class="fab fa-facebook-f"></i> פייסבוק</button>
+<button class="platform-btn active" data-platform="instagram"><i class="fab fa-instagram"></i> אינסטגרם</button>
+        <button class="platform-btn" data-platform="tiktok"><i class="fab fa-tiktok"></i> טיקטוק</button>
+        <button class="platform-btn" data-platform="youtube"><i class="fab fa-youtube"></i> יוטיוב</button>
+        <button class="platform-btn" data-platform="twitter"><i class="fab fa-twitter"></i> טוויטר</button>
+        <button class="platform-btn" data-platform="landing-page"><i class="fas fa-file-alt"></i> דף נחיתה</button>
+    </div>
+
+    <div id="tooltip-container"></div> <!-- מיכל לתפריטים המוצגים תחת הפלטפורמות -->
+
+    <div class="container">
+        <header>
+            <h1>העלאת Reels לאינסטגרם</h1>
+        </header>
+        
+        <div class="info-box">
+            <h3>למה Reels באינסטגרם?</h3>
+            <p>Reels היא תכונת וידאו קצרה ומרתקת של אינסטגרם המאפשרת יצירת סרטונים באורך של עד 90 שניות עם אפקטים, מוזיקה וכלים יצירתיים נוספים:</p>
+            <ul>
+                <li><strong>חשיפה מיידית:</strong> reels מופיעים בעמוד האקספלור ובפיד הראשי.</li>
+                <li><strong>אינטראקציה גבוהה:</strong> משתמשים נוטים לצפות בreels באופן תדיר.</li>
+                <li><strong>תוכן יצירתי:</strong> מאפשר שימוש באפקטים, מוסיקה ומעברים מיוחדים.</li>
+                <li><strong>תוכן ויראלי:</strong> מסייע בהפצת התוכן למשתמשים שאינם עוקבים אחרי היוצר.</li>
+            </ul>
+        </div>
+
+        <div class="seo-keywords-box">
+            <div class="keywords-section">
+                <h3>מילות מפתח מומלצות:</h3>
+                <div id="keyword-list"></div>
+            </div>
+            <div class="seo-meter-section">
+                <h3>ציון SEO:</h3>
+                <div class="seo-meter">
+                    <div id="seo-meter-fill" class="seo-meter-fill"></div>
+                </div>
+                <div id="seo-score" class="seo-score">0%</div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="reel-creation">
+                <div class="tab-container">
+                    <button class="tab active" onclick="switchTab('manual')">יצירת Reels ידני</button>
+                    <button class="tab" onclick="switchTab('ai')">יצירת Reels עם AI</button>
+                </div>
+                <div id="manual-post">
+                    <h2>יצירת Reels ידני</h2>
+                    <div class="input-group">
+                        <label for="manual-text">כיתוב ל-Reels:</label>
+                        <textarea id="manual-text" rows="5" placeholder="הקלד את כיתוב ה-Reels שלך כאן" oninput="updatePreview()"></textarea>
+                    </div>
+                    <div class="post-additions">
+                        <h3>הוספה ל-Reels שלך:</h3>
+                        <div class="addition-buttons">
+                            <button class="addition-btn" title="הוסף תמונה" onclick="addMedia('image')"><i class="fas fa-image"></i></button>
+                            <button class="addition-btn" title="הוסף סרטון" onclick="addMedia('video')"><i class="fas fa-video"></i></button>
+                            <button class="addition-btn" title="תייג אנשים" onclick="tagPeople()"><i class="fas fa-user-tag"></i></button>
+                            <button class="addition-btn" title="הוסף אימוג'י" onclick="openEmojiPicker()"><i class="far fa-smile"></i></button>
+                            <button class="addition-btn" title="הוסף מיקום" onclick="addLocation()"><i class="fas fa-map-marker-alt"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div id="ai-post" class="hidden">
+                    <h2>יצירת Reels עם AI</h2>
+                    <div class="input-group">
+                        <label for="ai-topic">נושא ה-Reels:</label>
+                        <input type="text" id="ai-topic" placeholder="לדוגמה: השקת מוצר חדש">
+                    </div>
+                    <div class="input-group">
+                        <label for="ai-content">תאר את תוכן ה-Reels:</label>
+                        <textarea id="ai-content" rows="5" placeholder="לדוגמה: מבצע קיץ בחנות בגדים עם הנחות מיוחדות"></textarea>
+                    </div>
+                    <div class="input-group">
+                        <label for="ai-audience">קהל יעד:</label>
+                        <input type="text" id="ai-audience" placeholder="לדוגמה: גברים ונשים בגילאי 18-35 שאוהבים אופנה">
+                    </div>
+                    <button id="generate-content" class="button" onclick="generateAIContent()">צור תוכן</button>
+                    <div id="ai-error" class="error-message"></div>
+                    <div class="post-additions">
+                        <h3>הוספה ל-Reels שלך:</h3>
+                        <div class="addition-buttons">
+                            <button class="addition-btn" title="הוסף תמונה" onclick="addMedia('image')"><i class="fas fa-image"></i></button>
+                            <button class="addition-btn" title="הוסף סרטון" onclick="addMedia('video')"><i class="fas fa-video"></i></button>
+                            <button class="addition-btn" title="תייג אנשים" onclick="tagPeople()"><i class="fas fa-user-tag"></i></button>
+                            <button class="addition-btn" title="הוסף אימוג'י" onclick="openEmojiPicker()"><i class="far fa-smile"></i></button>
+                            <button class="addition-btn" title="הוסף מיקום" onclick="addLocation()"><i class="fas fa-map-marker-alt"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="preview-container">
+                <h2>תצוגה מקדימה של ה-Reels</h2>
+                <div class="preview-toggle">
+                    <button class="preview-btn active" onclick="togglePreviewMode('desktop')">תצוגת דסקטופ</button>
+                    <button class="preview-btn" onclick="togglePreviewMode('mobile')">תצוגת מובייל</button>
+                </div>
+                <div id="preview-container" class="preview-desktop">
+                    <div class="instagram-header">Instagram</div>
+                    <div class="instagram-post">
+                        <div class="instagram-post-header">
+                            <img src="https://via.placeholder.com/40" alt="תמונת פרופיל">
+                            <div class="instagram-post-header-info">
+                                <div class="instagram-post-header-name">השם שלך</div>
+                                <div class="instagram-post-header-time">לפני שעה</div>
+                            </div>
+                        </div>
+                        <div class="instagram-post-content">
+                            <p id="preview-text"></p>
+                            <div id="media-preview" class="media-preview"></div>
+                        </div>
+                        <div class="instagram-post-actions">
+                            <span class="instagram-action">❤️ לייק</span>
+                            <span class="instagram-action">💬 תגובה</span>
+                            <span class="instagram-action">➡️ שיתוף</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="action-buttons">
+            <button id="publish-post" class="button primary" onclick="publishPost()">פרסם Reels</button>
+            <button class="button secondary" onclick="saveDraft()">שמור טיוטה</button>
+            <button class="button secondary" onclick="deletePost()">מחק</button>
+            <button id="show-recommendations" class="button secondary disabled" onclick="showRecommendations()">
+                הצג המלצות
+                <span class="recommendation-count hidden">3</span>
+            </button>
+        </div>
+
+        <div class="action-buttons navigation-buttons">
+            <button id="back-button" class="button secondary">חזור</button>
+            <button id="next-button" class="button primary">אשר והמשך</button>
+        </div>
+
+        <div class="recommendations-container hidden">
+            <h2>המלצות לשיפור</h2>
+            <div id="recommendations-loading" class="hidden">
+                <p>המערכת מעבדת נתונים...</p>
+                <p>מפיקה תוכן מומלץ...</p>
+                <p>מתאימה תוכן לקהל היעד...</p>
+                <p>התוכן מוכן!</p>
+            </div>
+            <div class="recommendations-content">
+                <div class="recommendations-list">
+                    <div id="recommendations-list"></div>
+                </div>
+                <div class="improved-preview">
+                    <h3>תצוגה מקדימה משופרת</h3>
+                    <div id="improved-preview" class="instagram-post"></div>
+                    <div class="post-additions">
+                        <h3>הוספה לפוסט שלך:</h3>
+                        <div class="addition-buttons">
+                            <button class="addition-btn" title="הוסף תמונה" onclick="addMedia('image')"><i class="fas fa-image"></i></button>
+                            <button class="addition-btn" title="הוסף סרטון" onclick="addMedia('video')"><i class="fas fa-video"></i></button>
+                            <button class="addition-btn" title="תייג אנשים" onclick="tagPeople()"><i class="fas fa-user-tag"></i></button>
+                            <button class="addition-btn" title="הוסף אימוג'י" onclick="openEmojiPicker()"><i class="far fa-smile"></i></button>
+                            <button class="addition-btn" title="הוסף מיקום" onclick="addLocation()"><i class="fas fa-map-marker-alt"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="recommendations-actions">
+                <button class="button primary" onclick="applyRecommendations()">יישם המלצות</button>
+                <button class="button secondary" onclick="closeRecommendations()">התעלם</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="emoji-picker" class="emoji-picker hidden">
+        <!-- תוכן הפנימי של בחירת אימוג'י יתמלא באופן דינמי -->
+    </div>
+
+      <footer>
+        <p>&copy; 2024 אינוויז'ן. כל הזכויות שמורות.</p>
+    </footer>
+  
+    <script src="system/content/instagram/reels/scripts.js"></script>
+    
+</body>
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>

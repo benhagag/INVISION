@@ -2,7 +2,6 @@ let isPostPublished = false;
 let currentTab = 'manual';
 let mediaFiles = [];
 let currentMediaIndex = 0;
-let recommendations = [];
 
 function switchTab(tab) {
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
@@ -21,7 +20,7 @@ function updatePreview() {
         previewText.textContent = document.getElementById('ai-content').value;
     }
     updateSEOScore();
-    updateMediaPreview();
+    updateImprovedPreview();
 }
 
 function updateSEOScore() {
@@ -52,7 +51,6 @@ function generateAIContent() {
 
     document.getElementById('ai-error').textContent = '';
     
-    // Simulating AI content generation
     const generatedContent = `חדש ב${topic}! 🎉\n${content}\nמיועד במיוחד ל${audience}.\nבואו לבקר אותנו ותיהנו מהצעות מיוחדות!`;
     
     document.getElementById('ai-content').value = generatedContent;
@@ -63,7 +61,7 @@ function publishPost() {
     isPostPublished = true;
     document.getElementById('show-recommendations').classList.remove('disabled');
     document.querySelector('.recommendation-count').classList.remove('hidden');
-    alert('הסטורי פורסם בהצלחה!');
+    alert('ה-Reels פורסם בהצלחה!');
 }
 
 function saveDraft() {
@@ -71,13 +69,13 @@ function saveDraft() {
 }
 
 function deletePost() {
-    if (confirm('האם אתה בטוח שברצונך למחוק את הסטורי?')) {
+    if (confirm('האם אתה בטוח שברצונך למחוק את ה-Reels?')) {
         document.getElementById('manual-text').value = '';
         document.getElementById('ai-content').value = '';
         mediaFiles = [];
         currentMediaIndex = 0;
         updatePreview();
-        alert('הסטורי נמחק בהצלחה.');
+        alert('ה-Reels נמחק בהצלחה.');
     }
 }
 
@@ -94,23 +92,21 @@ function showRecommendations() {
 }
 
 function displayRecommendations() {
-    const currentText = currentTab === 'manual' ? document.getElementById('manual-text').value : document.getElementById('ai-content').value;
-    
-    recommendations = [
-        { 
-            text: 'שינוי תמונה', 
-            reason: 'התמונה הנוכחית אינה מספיק מושכת. יש לבחור תמונה יותר אטרקטיבית ובעלת איכות גבוהה.',
-            example: 'במקום תמונה כהה ומטושטשת, השתמשו בתמונה מוארת וברורה של המוצר.'
-        },
+    const recommendations = [
         { 
             text: 'שינוי תוכן', 
             reason: 'התוכן הנוכחי אינו מספיק מעניין או ממוקד. יש לשנות את התוכן כך שיהיה יותר מושך וממוקד.',
             example: 'חדש בחנות שלנו! מבצע מיוחד על כל מוצרי הקיץ. בואו לבקר אותנו ותיהנו מהנחות מדהימות!'
         },
         { 
-            text: 'שינוי האשטאג', 
-            reason: 'האשטאגים הנוכחיים אינם מספיק רלוונטיים. יש להשתמש בהאשטאגים יותר מדויקים ורלוונטיים לתוכן.',
-            example: `${currentText} #חדשבקולקציה #מבצעקיץ #הנחותאופנה`
+            text: 'הוסף האשטאג', 
+            reason: 'האשטאגים רלוונטיים יגבירו את החשיפה.',
+            example: '#מבצע #הנחות #קיץ'
+        },
+        { 
+            text: 'הוסף קריאה לפעולה', 
+            reason: 'יעודד את הקוראים לפעול.',
+            example: 'בואו עכשיו לחנות!'
         }
     ];
 
@@ -131,22 +127,40 @@ function displayRecommendations() {
 }
 
 function updateImprovedPreview() {
-    const improvedPreview = document.getElementById('improved-preview');
-    const checkboxes = document.querySelectorAll('.recommendation-item input[type="checkbox"]');
-    let improvedText = currentTab === 'manual' ? document.getElementById('manual-text').value : document.getElementById('ai-content').value;
+    const originalText = currentTab === 'manual' ? document.getElementById('manual-text').value : document.getElementById('ai-content').value;
+    let improvedText = originalText;
+    let hashtags = '';
+    let cta = '';
 
-    checkboxes.forEach((checkbox, index) => {
-        if (checkbox.checked) {
-            const recommendation = recommendations[index];
-            if (recommendation.text === 'שינוי תוכן' || recommendation.text === 'שינוי האשטאג') {
-                improvedText = recommendation.example;
-            } else {
-                improvedText += `\n${recommendation.example}`;
-            }
+    document.querySelectorAll('#recommendations-list input:checked').forEach((checkbox) => {
+        const recommendationIndex = parseInt(checkbox.dataset.index, 10);
+        switch(recommendationIndex) {
+            case 0:
+                improvedText = 'חדש בחנות שלנו! מבצע מיוחד על כל מוצרי הקיץ. בואו לבקר אותנו ותיהנו מהנחות מדהימות!';
+                break;
+            case 1:
+                hashtags += ' #מבצע #הנחות #קיץ';
+                break;
+            case 2:
+                cta = ' בואו עכשיו לחנות!';
+                break;
         }
     });
 
-    improvedPreview.innerHTML = `
+    improvedText += hashtags;
+    improvedText += cta;
+
+    let mediaContent = '';
+    if (mediaFiles.length > 0) {
+        const currentMedia = mediaFiles[currentMediaIndex];
+        if (currentMedia.type === 'image') {
+            mediaContent = `<img src="${currentMedia.src}" alt="תמונה שנבחרה">`;
+        } else if (currentMedia.type === 'video') {
+            mediaContent = `<video src="${currentMedia.src}" controls></video>`;
+        }
+    }
+
+    document.getElementById('improved-preview').innerHTML = `
         <div class="instagram-post-header">
             <img src="https://via.placeholder.com/40" alt="תמונת פרופיל">
             <div class="instagram-post-header-info">
@@ -156,10 +170,14 @@ function updateImprovedPreview() {
         </div>
         <div class="instagram-post-content">
             <p>${improvedText}</p>
-            <div id="improved-media-preview" class="media-preview"></div>
+            <div class="media-preview">${mediaContent}</div>
+        </div>
+        <div class="instagram-post-actions">
+            <span class="instagram-action">❤️ לייק</span>
+            <span class="instagram-action">💬 תגובה</span>
+            <span class="instagram-action">➡️ שיתוף</span>
         </div>
     `;
-    updateImprovedMediaPreview();
 }
 
 function applyRecommendations() {
@@ -169,7 +187,6 @@ function applyRecommendations() {
     } else {
         document.getElementById('ai-content').value = improvedText;
     }
-    mediaFiles = improvedMediaFiles;
     updatePreview();
     closeRecommendations();
 }
@@ -182,23 +199,25 @@ function addMedia(type) {
     const input = document.createElement('input');
     input.type = 'file';
     input.accept = type === 'image' ? 'image/*' : 'video/*';
-    input.multiple = false;
+    input.multiple = true;
     input.onchange = function(event) {
-        const file = event.target.files[0];
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            mediaFiles = [{
-                type: type,
-                src: e.target.result,
-                name: file.name
-            }];
-            const filename = document.createElement('p');
-            filename.textContent = `קובץ נבחר: ${file.name}`;
-            const contentArea = currentTab === 'manual' ? document.getElementById('manual-post') : document.getElementById('ai-post');
-            contentArea.appendChild(filename);
-            updateMediaPreview();
-        };
-        reader.readAsDataURL(file);
+        const files = event.target.files;
+        Array.from(files).forEach(file => {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                mediaFiles.push({
+                    type: type,
+                    src: e.target.result,
+                    name: file.name
+                });
+                const filename = document.createElement('p');
+                filename.textContent = `קובץ נבחר: ${file.name}`;
+                const contentArea = currentTab === 'manual' ? document.getElementById('manual-post') : document.getElementById('ai-post');
+                contentArea.appendChild(filename);
+                updateMediaPreview();
+            }
+            reader.readAsDataURL(file);
+        });
     };
     input.click();
 }
@@ -219,26 +238,28 @@ function updateMediaPreview() {
             video.controls = true;
             mediaPreview.appendChild(video);
         }
+        mediaPreview.appendChild(createPreviewArrows());
     }
 }
 
-function updateImprovedMediaPreview() {
-    const improvedMediaPreview = document.getElementById('improved-media-preview');
-    improvedMediaPreview.innerHTML = '';
-    if (mediaFiles.length > 0) {
-        const currentMedia = mediaFiles[currentMediaIndex];
-        if (currentMedia.type === 'image') {
-            const img = document.createElement('img');
-            img.src = currentMedia.src;
-            img.alt = "תמונה שנבחרה";
-            improvedMediaPreview.appendChild(img);
-        } else {
-            const video = document.createElement('video');
-            video.src = currentMedia.src;
-            video.controls = true;
-            improvedMediaPreview.appendChild(video);
-        }
-    }
+function createPreviewArrows() {
+    const arrowsContainer = document.createElement('div');
+    arrowsContainer.className = 'preview-arrows';
+    
+    const leftArrow = document.createElement('button');
+    leftArrow.className = 'preview-arrow left';
+    leftArrow.innerHTML = '&#10094;';
+    leftArrow.onclick = () => changePreviewMedia(-1);
+    
+    const rightArrow = document.createElement('button');
+    rightArrow.className = 'preview-arrow right';
+    rightArrow.innerHTML = '&#10095;';
+    rightArrow.onclick = () => changePreviewMedia(1);
+    
+    arrowsContainer.appendChild(leftArrow);
+    arrowsContainer.appendChild(rightArrow);
+    
+    return arrowsContainer;
 }
 
 function changePreviewMedia(direction) {
@@ -249,7 +270,6 @@ function changePreviewMedia(direction) {
         currentMediaIndex = 0;
     }
     updateMediaPreview();
-    updateImprovedMediaPreview();
 }
 
 function tagPeople() {
@@ -282,54 +302,12 @@ function addLocation() {
     alert('פונקציונליות הוספת מיקום תיושם בעתיד');
 }
 
-function addGIF() {
-    alert('פונקציונליות הוספת GIF תיושם בעתיד');
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    const keywords = ['מבצע מיוחד', 'חדש על המדף', 'המלצת השבוע', 'מהדורה מוגבלת', 'הכי נמכר'];
-    const keywordList = document.getElementById('keyword-list');
-    keywords.forEach(keyword => {
-        const keywordElement = document.createElement('span');
-        keywordElement.classList.add('keyword');
-        keywordElement.textContent = keyword;
-        keywordElement.onclick = () => addKeyword(keyword);
-        keywordList.appendChild(keywordElement);
-    });
-    updatePreview();
-
-    const showRecommendationsBtn = document.getElementById('show-recommendations');
-    showRecommendationsBtn.addEventListener('mouseenter', function() {
-        if (this.classList.contains('disabled')) {
-            let tooltip = this.querySelector('.tooltip-bubble');
-            if (!tooltip) {
-                tooltip = document.createElement('div');
-                tooltip.classList.add('tooltip-bubble');
-                tooltip.textContent = 'יש לפרסם את הסטורי לקבלת המלצות';
-                this.appendChild(tooltip);
-            }
-        }
-    });
-
-    showRecommendationsBtn.addEventListener('mouseleave', function() {
-        const tooltip = this.querySelector('.tooltip-bubble');
-        if (tooltip) {
-            tooltip.remove();
-        }
-    });
-});
-
-function addKeyword(keyword) {
-    const textArea = currentTab === 'manual' ? document.getElementById('manual-text') : document.getElementById('ai-content');
-    textArea.value += (textArea.value ? ' ' : '') + keyword;
-    updatePreview();
-}	
 // Functionality for platform buttons with tooltips
 document.addEventListener('DOMContentLoaded', function() {
     const platformButtons = document.querySelectorAll('.platform-btn');
     const tooltipContainer = document.getElementById('tooltip-container');
-    let tooltip;  // משתנה לשמירת ההפניה לתפריט הנפתח
-    let activeButton;  // משתנה לשמירת הכפתור הפעיל
+    let tooltip;
+    let activeButton;
 
     const platformOptions = {
         facebook: [
@@ -365,7 +343,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     platformButtons.forEach(button => {
         button.addEventListener('mouseenter', function() {
-            activeButton = this;  // שמירת הכפתור הפעיל
+            activeButton = this;
             const platform = this.getAttribute('data-platform');
             const options = platformOptions[platform];
             const rect = this.getBoundingClientRect();
@@ -373,7 +351,7 @@ document.addEventListener('DOMContentLoaded', function() {
             tooltipContainer.innerHTML = `
                 <div class="tooltip" style="top: ${rect.bottom + 5}px; left: ${rect.left + window.scrollX}px; min-width: ${rect.width}px;">
                     <ul>
-                    ${options.map(option => `<li onclick="selectOption('https://benhagag.github.io/INVISION/${option.url}')">${option.value}</li>`).join('')}
+                        ${options.map(option => `<li onclick="selectOption('https://benhagag.github.io/INVISION/${option.url}')">${option.value}</li>`).join('')}
                     </ul>
                 </div>
             `;
@@ -381,7 +359,6 @@ document.addEventListener('DOMContentLoaded', function() {
             tooltip = tooltipContainer.querySelector('.tooltip');
             tooltip.style.display = 'block';
 
-            // שמירת התפריט הנפתח והוספת מאזיני אירועים
             tooltip.addEventListener('mouseenter', function() {
                 tooltip.style.display = 'block';
             });
@@ -401,7 +378,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function closeTooltip() {
         if (tooltip) {
             tooltip.style.display = 'none';
-            activeButton = null;  // איפוס הכפתור הפעיל
+            activeButton = null;
         }
     }
 });
@@ -409,3 +386,49 @@ document.addEventListener('DOMContentLoaded', function() {
 function selectOption(option) {
     window.location.href = option;
 }
+
+// Adding the JavaScript for the recommended keywords
+document.addEventListener('DOMContentLoaded', function() {
+    const keywords = ['מבצע מיוחד', 'חדש על המדף', 'המלצת השבוע', 'מהדורה מוגבלת', 'הכי נמכר'];
+    const keywordList = document.getElementById('keyword-list');
+    
+    keywords.forEach(keyword => {
+        const keywordElement = document.createElement('span');
+        keywordElement.classList.add('keyword');
+        keywordElement.textContent = keyword;
+        keywordElement.onclick = () => addKeyword(keyword);
+        keywordList.appendChild(keywordElement);
+    });
+    
+    updatePreview();
+});
+
+function addKeyword(keyword) {
+    const textArea = currentTab === 'manual' ? document.getElementById('manual-text') : document.getElementById('ai-content');
+    textArea.value += (textArea.value ? ' ' : '') + keyword;
+    updatePreview();
+}
+
+// Tooltip functionality for "show recommendations" button
+document.addEventListener('DOMContentLoaded', function() {
+    const showRecommendationsBtn = document.getElementById('show-recommendations');
+
+    showRecommendationsBtn.addEventListener('mouseenter', function() {
+        if (this.classList.contains('disabled')) {
+            let tooltip = this.querySelector('.tooltip-bubble');
+            if (!tooltip) {
+                tooltip = document.createElement('div');
+                tooltip.classList.add('tooltip-bubble');
+                tooltip.textContent = 'יש לפרסם את ה-Reels לקבלת המלצות';
+                this.appendChild(tooltip);
+            }
+        }
+    });
+
+    showRecommendationsBtn.addEventListener('mouseleave', function() {
+        const tooltip = this.querySelector('.tooltip-bubble');
+        if (tooltip) {
+            tooltip.remove();
+        }
+    });
+});
