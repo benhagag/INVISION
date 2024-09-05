@@ -1,0 +1,339 @@
+:root {
+    --primary-bg: #243665;
+    --secondary-bg: #2c4278;
+    --accent-color: #00bec6;
+    --text-color: #ffffff;
+    --card-bg: #1a2a4d;
+    --hover-color: #34518c;
+    --primary-color: #243665;
+    --secondary-color: #00bec6;
+    --input-bg: rgba(255, 255, 255, 0.1);
+}
+
+/* עיצוב בסיסי */
+body {
+    font-family: 'Assistant', sans-serif;
+    background-color: var(--primary-bg);
+    color: var(--text-color);
+    margin: 0;
+    padding:0;
+    line-height: 1.6;
+    direction: rtl;
+    text-align: right;
+}
+
+/* עיצוב ההאדר הראשי */
+header {
+    background-color: var(--secondary-bg);
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+/* עיצוב התפריט המרכזי */
+.centered-menu {
+    list-style-type: none;
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+.centered-menu li {
+    display: inline-flex;
+    align-items: center;
+}
+
+nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+nav a i {
+    margin-left: 0.5rem;
+}
+
+nav a:hover, nav a.active {
+    background-color: var(--accent-color);
+    color: var(--primary-bg);
+}
+
+/* עיצוב כפתורי הפלטפורמות */
+.platform-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.platform-btn {
+    background-color: var(--primary-bg); /* צבע הרקע */
+    color: var(--accent-color); /* צבע הטורקיז */
+    border: 2px solid var(--accent-color); /* גבול בצבע טורקיז */
+    margin: 0; /* ביטול כל המרווחים בין הכפתורים */
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    position: relative; /* להוסיף כדי לעזור במיקום היחסי של התפריט */
+}
+
+.platform-btn i {
+    font-size: 1.2rem;
+    color: var(--accent-color); /* צבע האייקון */
+}
+
+.platform-btn:hover {
+    background-color: var(--hover-color); /* גוון כהה יותר של טורקיז */
+    color: var(--primary-bg);
+}
+
+.platform-btn.active {
+    background-color: var(--accent-color); /* טורקיז בהיר */
+    color: var(--primary-bg); /* צבע טקסט כהה */
+    border: none;
+}
+
+.platform-btn.active i {
+    color: var(--primary-bg); /* צבע האייקון */
+}
+
+/* עיצוב תפריט נפתח של כפתורי הפלטפורמות */
+.tooltip {
+    position: absolute;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    padding: 0.5rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    display: none;
+    z-index: 1000;
+    white-space: nowrap;
+    text-align: right;
+    width: auto; /* לרוחב אוטומטי */
+    min-width: 100%; /* לפחות ברוחב הכפתור */
+}
+
+.tooltip ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tooltip li {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+.tooltip li:hover {
+    background-color: var(--hover-color);
+    color: var(--accent-color);
+}
+
+/* עיצוב תיבות ושדות */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+h1, h2, h3 {
+    text-align: center;
+    color: var(--secondary-color);
+}
+
+.btn {
+    background-color: var(--secondary-color);
+    color: var(--primary-bg);
+    border: none;
+    padding: 12px 24px;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #00a0a8;
+}
+
+.btn-inverse {
+    background-color: var(--primary-bg);
+    color: var(--text-color);
+    border: 1px solid var(--secondary-color);
+}
+
+.btn-inverse:hover {
+    background-color: #1a2a4f;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"], input[type="number"], select, textarea, input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--secondary-color);
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    border-radius: 5px;
+}
+
+input::placeholder, textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+select {
+    appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%2300bec6%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: left 10px center;
+    background-size: .65em auto;
+    padding-left: 30px;
+}
+
+select option {
+    background-color: var(--primary-bg);
+    color: var(--text-color);
+}
+
+/* עיצוב אלמנטים נוספים */
+.info-container {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.advantages {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.advantage-item {
+    flex-basis: calc(50% - 10px);
+    background-color: rgba(0, 190, 198, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+/* עיצוב תצוגה מקדימה של מודעות */
+#adForm, #invisionPrompt {
+    display: none;
+}
+
+#adPreview {
+    display: none;
+    background-color: #fff;
+    color: #000;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+    position: relative;
+}
+
+.close-preview {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+}
+
+.ad-preview-text {
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.ad-preview-text h3 {
+    color: #1a0dab;
+    font-size: 18px;
+    margin: 0;
+}
+
+.ad-preview-text .ad-url {
+    color: #006621;
+    font-size: 14px;
+}
+
+.ad-preview-text p {
+    color: #545454;
+    font-size: 13px;
+    margin: 5px 0;
+}
+
+.ad-preview-image, .ad-preview-video, .ad-preview-responsive {
+    max-width: 600px;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.ad-preview-image img, .ad-preview-video video, .ad-preview-responsive img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.cta-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+footer {
+    background-color: #243665;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}

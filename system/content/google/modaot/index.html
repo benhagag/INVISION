@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - מודעה ממומנת לגוגל</title>
+  <link rel="stylesheet" href="./style.css">
+  <base href="https://benhagag.github.io/INVISION/">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>יצירת מודעה לגוגל - InVision</title>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="system/content/google/modaot/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">איוויז'ן</div>
+            <ul class="centered-menu">
+                <li><a href="system/dashboard/index.html"><i class="fas fa-home" aria-hidden="true"></i> דף הבית</a></li>
+                <li><a href="system/campaign/index.html"><i class="fas fa-ad" aria-hidden="true"></i> צור קמפיין</a></li>
+                <li><a href="system/content/index.html" class="active" aria-current="page"><i class="fas fa-plus-circle" aria-hidden="true"></i> צור תוכן</a></li>
+                <li><a href="system/recommendations/index.html"><i class="fas fa-lightbulb" aria-hidden="true"></i> המלצות</a></li>
+                <li><a href="system/studio/index.html" ><i class="fas fa-paint-brush" aria-hidden="true"></i> סטודיו</a></li>
+                <li><a href="system/settings/index.html"><i class="fas fa-cog" aria-hidden="true"></i> הגדרות</a></li>
+                <li><a href="#"><i class="fas fa-sign-out-alt" aria-hidden="true"></i> התנתק</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="platform-buttons">
+        <button class="platform-btn" data-platform="facebook"><i class="fab fa-facebook-f"></i> פייסבוק</button>
+        <button class="platform-btn" data-platform="instagram"><i class="fab fa-instagram"></i> אינסטגרם</button>
+        <button class="platform-btn" data-platform="tiktok"><i class="fab fa-tiktok"></i> טיקטוק</button>
+        <button class="platform-btn" data-platform="youtube"><i class="fab fa-youtube"></i> יוטיוב</button>
+        <button class="platform-btn" data-platform="twitter"><i class="fab fa-twitter"></i> טוויטר</button>
+        <button class="platform-btn active" data-platform="google"><i class="fab fa-google"></i> גוגל</button>
+        <button class="platform-btn" data-platform="landing-page"><i class="fas fa-file-alt"></i> דף נחיתה</button>
+    </div>
+
+    <div id="tooltip-container"></div> <!-- מיכל לתפריטים המוצגים תחת הפלטפורמות -->
+
+    <div class="container">
+        <h1>יצירת מודעה לגוגל</h1>
+        
+        <div class="form-group">
+            <select id="adType" onchange="showAdInfo()">
+                <option value="">בחר סוג מודעה</option>
+                <option value="text">מודעת טקסט</option>
+                <option value="image">מודעת תמונה</option>
+                <option value="video">מודעת וידאו</option>
+                <option value="responsive">מודעה רספונסיבית</option>
+            </select>
+        </div>
+
+        <div id="adTypeInfo" class="info-container" style="display:none;"></div>
+
+        <div class="button-container">
+            <button class="btn" onclick="showManualForm()">צור מודעה ידנית</button>
+            <button class="btn btn-inverse" onclick="showInvisionPrompt()">צור מודעה עם INVISION</button>
+        </div>
+
+        <div id="invisionPrompt" style="display:none;">
+            <h2>יצירת מודעה עם INVISION</h2>
+            <div class="form-group">
+                <label for="adTopic">באיזה נושא היית רוצה לקבל את המודעה?</label>
+                <input type="text" id="adTopic" placeholder="לדוגמה: מכירת קיץ של בגדי ים">
+            </div>
+            <button class="btn" onclick="generateAd()">צור מודעה</button>
+        </div>
+
+        <form id="adForm" style="display:none;">
+            <h2 id="adFormTitle"></h2>
+            
+            <div class="form-group">
+                <label for="campaignName">שם הקמפיין:</label>
+                <input type="text" id="campaignName" required placeholder="לדוגמה: קמפיין קיץ 2024">
+            </div>
+            
+            <div class="form-group">
+                <label for="dailyBudget">תקציב יומי (בש"ח):</label>
+                <input type="number" id="dailyBudget" required placeholder="לדוגמה: 100">
+            </div>
+            
+            <div class="form-group">
+                <label for="adGroup">קבוצת מודעות:</label>
+                <input type="text" id="adGroup" required placeholder="לדוגמה: מוצרי קיץ">
+            </div>
+            
+            <div class="form-group">
+                <label for="keywords">מילות מפתח (הפרד בפסיקים):</label>
+                <textarea id="keywords" rows="3" required placeholder="לדוגמה: בגדי ים, כובעי שמש, קרם הגנה"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="targetAudience">קהל יעד:</label>
+                <input type="text" id="targetAudience" required placeholder="לדוגמה: גילאי 25-45, מתעניינים בספורט ונופש">
+            </div>
+            
+            <div class="form-group">
+                <label for="geographicTarget">יעד גיאוגרפי:</label>
+                <input type="text" id="geographicTarget" required placeholder="לדוגמה: תל אביב והסביבה">
+            </div>
+            
+            <div id="adTypeFields"></div>
+            
+            <div class="form-group">
+                <label for="finalUrl">כתובת URL של דף הנחיתה:</label>
+                <input type="text" id="finalUrl" required placeholder="לדוגמה: https://www.example.com/summer-sale">
+            </div>
+            
+            <div class="form-group">
+                <label for="ctaText">טקסט לכפתור קריאה לפעולה:</label>
+                <input type="text" id="ctaText" required placeholder="לדוגמה: קנה עכשיו">
+            </div>
+            
+            <button type="submit" class="btn">שלח מודעה</button>
+            <button type="button" class="btn btn-inverse" onclick="showAdPreview()">תצוגה מקדימה</button>
+        </form>
+
+        <div id="adPreview" style="display:none;">
+            <span class="close-preview" onclick="closeAdPreview()">&times;</span>
+            <h2>תצוגה מקדימה של המודעה</h2>
+            <div id="adPreviewContent"></div>
+        </div>
+    </div>
+  
+          <footer>
+        <p>&copy; 2024 אינוויז'ן. כל הזכויות שמורות.</p>
+    </footer>
+
+    <script src="system/content/google/modaot/script.js"></script>
+</body>
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
